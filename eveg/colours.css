@@ -1,0 +1,28 @@
+html{
+  /*Space cadet*/
+    --colour-1-h: 224;
+    --colour-1-s: 40%;
+    --colour-1-l: 22%;
+  
+  /*Cerulean*/
+    --colour-4-h: 190;
+    --colour-4-s: 100%;
+    --colour-4-l: 28%;
+  
+  /*Bright pink (Crayola)*/
+    --colour-3-h: 346;
+    --colour-3-s: 84%;
+    --colour-3-l: 61%;
+  
+  /*Seasalt*/
+    --colour-2-h: 0;
+    --colour-2-s: 0%;
+    --colour-2-l: 98%;
+  
+  /*Pistachio*/
+    --colour-5-h: 100;
+    --colour-5-s: 59%;
+    --colour-5-l: 63%;
+  
+  }
+
