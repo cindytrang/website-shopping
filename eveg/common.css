@@ -254,10 +254,14 @@ html{
 
 #cookieMessage{
     position: fixed;
-    right: 0px;
+    left: 0px;
     bottom: 0px;
-    background-color: hsl(var(--colour-4-h), var(--colour-4-s), var(--colour-4-l));
+    background-color: hsl(var(--colour-3-h), var(--colour-3-s), var(--colour-3-l));
+    border-radius: 0;
     padding: 20px;
+    width: 100%;
+    z-index: 999;
+    backdrop-filter: blur(10px); 
     /* display: none; */
 }
 
@@ -321,4 +325,3 @@ form.customerDetails button{
 .checkoutList tr:last-child td:first-child{
     text-align: right;
 }
-
