@@ -1,6 +1,8 @@
 /*Common CSS to be shown on all versions (mobile/desktop)*/
 .productBasketDiv{
-    width: 8em;
+    width: 128px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 button{
@@ -8,7 +10,38 @@ button{
     color:var(--colour-1);
     font-size: 100%;
 }
+.addToBasket{
+    background-color: var(--colour-1);
+    color: var(--colour-2);
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    font-size: 70%;
+    margin-top: 10px;
+}
+button:hover{
+    background-color: var(--colour-4);
+    color:  var(--colour-2);
+}
+.buyInput {
+    width: 30%;
+    height:28px;
+    font-size: 20px;
+    appearance: textfield;
+}
+.buyInput:hover{
+    border-color: var(--colour-1);
+}
 
+.btn{
+    background-color: var(--colour-1);
+    color: var(--colour-2);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    font-size: 15px;
+}
 .shop-product-img img{
     width: 8rem;
     height: 8rem;
