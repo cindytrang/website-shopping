@@ -266,11 +266,13 @@ html, body {
     z-index: 999;
     backdrop-filter: blur(10px); 
     /* display: none; */
+    text-align: center;
 }
 
 #acceptCookies{
     font-size: 100%;
     margin-top: 2rem;
+    color: var(--colour-2);
 }
 p{
     font-size: 150%;
@@ -327,4 +329,17 @@ form.customerDetails button{
 
 .checkoutList tr:last-child td:first-child{
     text-align: right;
+}
+
+#acceptButton{
+    background-color: var(--colour-4);
+    width: 115px;
+}
+
+#rejectButton{
+    width:115px
+}
+
+#customiseButton{
+    width: 115px;
 }
