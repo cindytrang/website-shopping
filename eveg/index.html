@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
   <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="colours.css">
 
@@ -38,21 +39,13 @@
     </div>
 
     <div class="search-bar">
-      <input type="text" id="searchbox"></input>
       <div class="searchbuttons">
-        <a id="searchbutton" href="#">
-          <span>
-            search
-            </span>
-        </a>
         <a id="closesearchbutton" href="#">
-
-          <span>
-            close
-          </span>
+            <span>X</span>
         </a>
-        
-        </div>
+      </div>
+      <input type="text" id="searchbox"></input>
+      <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
     </div>
   </div>
     <div onclick=transformProduct() class="productList">

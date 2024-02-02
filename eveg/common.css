@@ -1,14 +1,58 @@
 /*Common CSS to be shown on all versions (mobile/desktop)*/
+.return {
+    padding: 20px;
+}
 .productBasketDiv{
-    width: 8em;
+    width: 128px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 button{
-    background-color: var(--colour-2);
-    color:var(--colour-1);
+    background-color: var(--colour-1); 
+    color: var(--colour-2);
     font-size: 100%;
+    border: none;
 }
-
+.addToBasket{
+    background-color: var(--colour-1);
+    color: var(--colour-2);
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    font-size: 70%;
+    margin-top: 10px;
+}
+button:hover{
+    background-color: var(--colour-4);
+    color:  var(--colour-2);
+}
+.buyInput {
+    width: 30%;
+    height:28px;
+    font-size: 20px;
+    appearance: textfield;
+}
+input:hover{
+    border-color: var(--colour-1);
+}
+input{
+    appearance: textfield;
+}
+.btn{
+    background-color: var(--colour-1);
+    color: var(--colour-2);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    font-size: 15px;
+}
+h2{
+    margin-left: 20px;
+    color: var(--colour-1);
+    margin-top: 20px;
+}
 .shop-product-img img{
     height: 100%;
     width: 100%;
@@ -52,7 +96,7 @@ button{
 .search-bar.active{
     display:flex;
     font-size: large;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* padding-right: 1em; */
 }
 
@@ -78,10 +122,13 @@ button{
     display: none;
     padding-bottom: 18px;
     padding-top: 4px;
+    padding-left: 10px;
 }
 
 .searchbuttons a span{
-    color: black;
+    color: var(--colour-1);
+    vertical-align: middle;
+    padding: 10px;
 }
 
 html{
@@ -148,6 +195,7 @@ html, body {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: var(--colour-1);
 }
 
 
@@ -320,27 +368,35 @@ a:visited{
 
 
 form.customerDetails {
-background: #f9f9f9;
-border: 1px solid #c1c1c1;
+background: var(--colour-2);
+border: 1px solid var(--colour-1);
 width: 50%;
+margin-left: 20px;
+padding-left: 3%;
+padding-right: 3%;
+padding-top: 10px;
 }
 
 form.customerDetails label {
 display: block;
+color: var(--colour-1);
 }
 
 form.customerDetails input {
-width: 80%;
+width: 100%;
+color: var(--colour-1);
 }
 form.customerDetails button{
     margin-top:20px;
     display: block;
+    margin-bottom: 20px;
 }
 
 .checkoutList{
     width:50%;
     margin-bottom: 4rem;
     margin-top: 2rem;
+    color: var(--colour-1);
 }
 
 .checkoutList{
