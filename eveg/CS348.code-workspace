@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "CS348",
+			"path": ".."
+		},
+		{
+			"name": "food_items",
+			"path": "../../Desktop/food_items"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CS348"
+	}
+}

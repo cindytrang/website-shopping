@@ -6,12 +6,14 @@
   <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="colours.css">
-  <script src="products.js"></script>
+
   <script src="shop.js"></script>
   <title>E-Veg Shop</title>
 </head>
-<body>
-    <div class="hero"><div class="title">E-Veg</div>
+<body> 
+    
+    <div class="hero">
+      <img class="logo" src="images/e_veg_logo.png"></img>
     <div class="navbar">
       <div class="toggle-wrapper">
       <a href="#" class="toggle-button">
@@ -52,8 +54,9 @@
         </div>
     </div>
   </div>
-    <div class="productList">
-
+    <div onclick=transformProduct() class="productList">
+      <script src="products.js"></script>
+        
     </div>
 
     <div class="about">
@@ -64,7 +67,7 @@
     <p>By using this site, you are consenting to our use of cookies</p>
     <p>We use cookies purely for the functionality of the website - to store the products that are in your basket.</p>
     <p>For further details of how we use your data, please see our privacy policy.</p>
-    <p><a id="acceptCookies">Accept</a></p>
+    <p id="acceptCookies" onclick=hideBox()>Accept</p>
     </div>
 </body>
 </html>
