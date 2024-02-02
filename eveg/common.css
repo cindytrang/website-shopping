@@ -10,21 +10,35 @@ button{
 }
 
 .shop-product-img img{
-    width: 8rem;
-    height: 8rem;
-    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit:fill;
     vertical-align: middle;
 }
+
+
 .shop-product-desc{
-    display:none;
+    display:flex;
+    border: 1px solid green;
+
 }
 
 .shop-product{
-    font-size: 200%;
+    font-size: 150%;
+    padding: 1%;
+    border: 1px solid var(--colour-4);
+    border-radius: 2%;
+    width: fit-content; /* This makes the size of the product box the width that it is defined in shop-product*/
+    width: 20%;
+    position: relative;
+    background-color: var(--colour-2);
+
 }
 
+  
+
 .shop-product-price{
-    float:left;
+    display: contents;
 }
 
 .searchbuttons span{
@@ -86,11 +100,15 @@ html, body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
-.shop-product{
-    width: 20%;
-    float: left;
 
+
+.shop-bigPproduct {
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    z-index: 1;
 }
+
 
 .menu{
     position:absolute;
@@ -102,15 +120,17 @@ html, body {
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    padding-top:2rem;
-    padding-bottom:2rem;
-    padding-left:2rem;
-    padding-right:2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /*Display, flex-wrap and justify content create the grid structure for the items, aligned in the center.*/
+    gap: 20px; /*Gaps between each product container*/
 }
+
+
 
 .navbar{
     height: 4em;
-}
+    }
 
 .navbar,li ul {
     display: flex;
@@ -178,7 +198,7 @@ html, body {
 
 .navbar-links li ul{
     position:absolute;
-    display: flex;
+    float: inline-end;
 }
 .toggle-wrapper{
     position:absolute;
@@ -243,9 +263,16 @@ html, body {
 .hero div.title{
     font-size: 6rem;
     font-weight: 900;
+    float: inline-start;
     width: 100%;
     height: calc(100% - 6rem);
-    display: inline-block;
+    color: var(--colour-1);
+}
+
+.hero img.logo{
+    padding: 1%;
+    float: inline-start;
+    height: 5em;
     color: var(--colour-1);
 }
 
