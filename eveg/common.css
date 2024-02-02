@@ -1,4 +1,7 @@
 /*Common CSS to be shown on all versions (mobile/desktop)*/
+.return {
+    padding: 20px;
+}
 .productBasketDiv{
     width: 128px;
     display: flex;
@@ -33,7 +36,9 @@ button:hover{
 input:hover{
     border-color: var(--colour-1);
 }
-
+input{
+    appearance: textfield;
+}
 .btn{
     background-color: var(--colour-1);
     color: var(--colour-2);
@@ -42,6 +47,11 @@ input:hover{
     border-radius: 50%;
     border: none;
     font-size: 15px;
+}
+h2{
+    margin-left: 20px;
+    color: var(--colour-1);
+    margin-top: 20px;
 }
 .shop-product-img img{
     width: 8rem;
@@ -165,6 +175,7 @@ html, body {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: var(--colour-1);
 }
 
 
@@ -330,27 +341,35 @@ a:visited{
 
 
 form.customerDetails {
-background: #f9f9f9;
-border: 1px solid #c1c1c1;
+background: var(--colour-2);
+border: 1px solid var(--colour-1);
 width: 50%;
+margin-left: 20px;
+padding-left: 3%;
+padding-right: 3%;
+padding-top: 10px;
 }
 
 form.customerDetails label {
 display: block;
+color: var(--colour-1);
 }
 
 form.customerDetails input {
-width: 80%;
+width: 100%;
+color: var(--colour-1);
 }
 form.customerDetails button{
     margin-top:20px;
     display: block;
+    margin-bottom: 20px;
 }
 
 .checkoutList{
     width:50%;
     margin-bottom: 4rem;
     margin-top: 2rem;
+    color: var(--colour-1);
 }
 
 .checkoutList{

@@ -89,8 +89,8 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
     }
     elements = document.getElementsByClassName("addToBasket");
     for(eIn = 0; eIn < elements.length; eIn++){
-      elements[eIn].removeEventListener("click",increment);
-      elements[eIn].addEventListener("click",increment);
+      //elements[eIn].removeEventListener("click",increment);
+      //elements[eIn].addEventListener("click",increment);
     }
   }
 

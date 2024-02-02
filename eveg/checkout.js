@@ -41,7 +41,7 @@ function calculateBasket(){
     let price = productDetails[productID].price;
     let productTotal = price * quantity;
     total = total + productTotal;
-    let rowHTML = `<td>${productDetails[productID].name}</td><td>${quantity}</td><td>${(price / 100).toFixed(2)}</td><td>£${(productTotal / 100).toFixed(2)}</td>`;
+    let rowHTML = `<td>${productDetails[productID].name}</td><td><input class="checkoutQuant"  min="0" value=${quantity} type="number"></input></td><td>${(price / 100).toFixed(2)}</td><td>£${(productTotal / 100).toFixed(2)}</td>`;
     var thisProduct = document.createElement("tr");
     thisProduct.innerHTML = rowHTML;
     document.querySelector('.checkoutList').appendChild(thisProduct);
