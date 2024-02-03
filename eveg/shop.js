@@ -20,46 +20,47 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
 <input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0" type="number">
 <button class="btn adjustUp">+</button></div></div></div></div></div>`;
 
-  function init(){
-    const toggleButton = document.getElementsByClassName('toggle-button')[0];
-    const hero = document.getElementsByClassName('hero')[0];
-    const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+function init() {
+    // const toggleButton = document.getElementsByClassName('toggle-button')[0];
+    // const hero = document.getElementsByClassName('hero')[0];
+    // // const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 
-    //When the toggle button is pressed (if visible by the screen size, the menu is shown)
-    toggleButton.addEventListener('click',()=>{
-      navbarLinks.classList.toggle('active');
-      hero.classList.toggle('menuactive');
-    });
+    // //When the toggle button is pressed (if visible by the screen size, the menu is shown)
+    // toggleButton.addEventListener('click',()=>{
+    //   navbarLinks.classList.toggle('active');
+    //   hero.classList.toggle('menuactive');
+    // });
 
-    const searchBar = document.getElementsByClassName('search-bar')[0];
-    //Show the search bar when the search link is pressed
-    document.getElementById('search-link').addEventListener('click',()=>{
-      searchBar.classList.toggle('active');
-      document.getElementById('searchbox').focus();
-    });
+    // const searchBar = document.getElementsByClassName('search-bar')[0];
+    // //Show the search bar when the search link is pressed
+    // document.getElementById('search-link').addEventListener('click',()=>{
+    //   searchBar.classList.toggle('active');
+    //   document.getElementById('searchbox').focus();
+    // });
 
-    //Close the search bar
-    document.getElementById('searchbutton').addEventListener('click', ()=>{
-      searchStr = document.getElementById('searchbox').value;
-      redraw();
-    });
+    // //Close the search bar
+    // document.getElementById('searchbutton').addEventListener('click', ()=>{
+    //   searchStr = document.getElementById('searchbox').value;
+    //   redraw();
+    // });
 
-    //Close the search bar
-    document.getElementById('closesearchbutton').addEventListener('click', ()=>{
-      searchStr = "";
-      searchBar.classList.remove('active');
-      redraw();
-    });
+    // //Close the search bar
+    // document.getElementById('closesearchbutton').addEventListener('click', ()=>{
+    //   searchStr = "";
+    //   searchBar.classList.remove('active');
+    //   redraw();
+    // });
 
+    if(getCookie("cookieMessageSeen") == "true"){
+      document.getElementById('cookieMessage').style.display = 'none';
+    }
+  
     //Close the cookies message
     document.getElementById('acceptCookies').addEventListener('click', ()=>{
       setCookie('cookieMessageSeen', true);
       document.getElementById('cookieMessage').style.display = 'none';
     });
 
-    if(getCookie("cookieMessageSeen") == "true"){
-      document.getElementById('cookieMessage').style.display = 'none';
-    }
     initProducts(redraw);
   }
 

@@ -39,7 +39,7 @@ input:hover{
 input{
     appearance: textfield;
 }
-.btn{
+/* .btn{
     background-color: var(--colour-1);
     color: var(--colour-2);
     width: 28px;
@@ -47,7 +47,8 @@ input{
     border-radius: 50%;
     border: none;
     font-size: 15px;
-}
+} */
+
 h2{
     margin-left: 20px;
     color: var(--colour-1);
@@ -173,9 +174,7 @@ html, body {
     gap: 20px; /*Gaps between each product container*/
 }
 
-
-
-.navbar{
+/* .navbar{
     height: 4em;
     }
 
@@ -183,9 +182,11 @@ html, body {
     display: flex;
     justify-content: left;
     align-items: center;
-    color: white;
-    padding-top: 0.5em;
-}
+    color:  var(--colour-2);
+    padding-top: 1 em;
+    padding-bottom: 1.5em;
+
+} */
 
 .about{
 
@@ -197,8 +198,6 @@ html, body {
     text-align: center;
     color: var(--colour-1);
 }
-
-
 
 .navbar-links ul{
     margin: 0;
@@ -223,7 +222,7 @@ html, body {
 }
 
 .navbar-links li a, .subnavbar-links li a{
-    color: var(--colour-1);
+    color: var(--colour-3);
     text-decoration: none;
     font-size:1.5em;
     font-weight: 600;
@@ -322,6 +321,146 @@ html, body {
     float: inline-start;
     height: 5em;
     color: var(--colour-1);
+}
+
+video {
+      filter: brightness(0.5); /* Adjust the value as needed (1 is normal, < 1 darkens, > 1 lightens) */
+}
+
+.banner .jumbotron {
+  margin-bottom: 0;
+}
+
+.banner .container {
+  padding-top: 150px;
+  z-index: 5;
+}
+
+.banner .jumbotron .container {
+  position: relative;
+  z-index: 5;
+}
+.banner .jumbotron .container .card {
+  margin-top: 2.3rem;
+  z-index: 5;
+  background-color: transparent;
+}
+.banner .jumbotron .container .card .card-icon .card-icon-i {
+  border-color: var(--colour-1-h);
+  color: var(--colour-5-h);
+}
+.banner .jumbotron .container .card .card-icon .card-icon-i i {
+  color:var(--colour-3-h);
+}
+.banner .jumbotron .container .card .card-body .card-title {
+  color:white;
+  text-transform: uppercase;
+}
+
+.title {
+  text-align: center;
+  color: var(--colour-5);
+  margin-bottom: 3rem;
+}
+
+/* NAVBAR */
+
+.page-header .navbar .navbar-brand img {
+  height: 60px;
+}
+
+.page-header .navbar .navbar-nav .nav-link {
+  color: var(--colour-5);
+  font-size: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.page-header .navbar .navbar-nav .nav-link:focus,
+.page-header .navbar .navbar-nav .nav-link:hover,
+.page-header .navbar .navbar-nav .nav-link.active {
+  color: hsla(var(--colour-2-h), var(--colour-2-s), var(--colour-2-l), 1);
+}
+
+.page-header .navbar .navbar-nav .dropdown .badge {
+  position: absolute;
+  top: 5px;
+  font-weight: 400;
+  text-align: center;
+}
+.page-header .navbar.bg-white {
+  box-shadow: 0 3px 7px hsla(var(--colour-4-h), var(--colour-4-s), var(--colour-4-l), 0.13);
+}
+.page-header .navbar.bg-white .navbar-nav .nav-link {
+  color: var(--colour-4-h);
+}
+.page-header .navbar.bg-white .navbar-nav .nav-link:focus, .page-header .navbar.bg-white .navbar-nav .nav-link:hover, .page-header .navbar.bg-white .navbar-nav .nav-link.active {
+  color: var(--colour-3-h);
+}
+.page-header .navbar .avatar-header {
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  display: inline-table;
+}
+.page-header .navbar .avatar-header img {
+  width: 100%;
+  height: auto;
+}
+.page-header .navbar .shopping-cart {
+  width: 300px;
+  right: 0;
+  left: auto;
+}
+.page-header .navbar .shopping-cart ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.page-header .navbar .shopping-cart .drop-title {
+  padding: 11px 20px 15px;
+  border-bottom: 1px solid hsla(var(--colour-1-h), var(--colour-1-s), var(--colour-1-l), 0.13);
+}
+
+.page-header .navbar .shopping-cart .drop-title.d-flex {
+  border-top: 1px solid hsla(var(--colour-1-h), var(--colour-1-s), var(--colour-1-l), 0.13);
+}
+
+.page-header .navbar .shopping-cart .shopping-cart-list {
+  height: 200px;
+  position: relative;
+  overflow-y: auto;
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media {
+  border-bottom: 1px solid hsla(var(--colour-1-h), var(--colour-1-s), var(--colour-1-l), 0.13);
+  padding: 10px 15px;
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media h5 {
+  font-size: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  color:var(--colour-3-h);
+  font-weight: 400;
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media h5 a {
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media h5 a:focus, .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a:hover, .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a.active {
+  color: var(--colour-3-h);
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media p {
+  margin: 0;
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media .price span {
+  display: inline-block;
+  margin-right: 5px;
+  color:var(--colour-3-h);
+  font-size: 0.8rem;
+}
+.page-header .navbar .shopping-cart .shopping-cart-list .media .price span.discount {
+  font-size: 0.7rem;
+  text-decoration: line-through;
 }
 
 .imgspacer{
@@ -425,4 +564,67 @@ form.customerDetails button{
 
 #customiseButton{
     width: 115px;
+}
+
+.card-product {
+  text-align: center;
+}
+.card-product .card-title {
+  margin-bottom: 0;
+}
+.card-product .card-title a {
+  color: #333333;
+}
+
+.card-product .card-title a:hover, .card-product .card-title a:focus {
+  color: #E91E63;
+}
+.card-product .card-price span.reguler {
+  color: #E91E63;
+  font-size: 1rem;
+}
+.card-product .card-price span.discount {
+  color: #777777;
+  font-size: 0.8rem;
+}
+
+
+.owl-carousel .owl-nav {
+  display: block !important;
+  margin: 0;
+}
+.owl-carousel .owl-nav div {
+  /* background: $primary-color; */
+  border-radius: 0;
+  color: #E91E63;
+  font-size: 50px;
+  height: 50px;
+  line-height: 35px;
+  margin: -20px 0 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  top: 50%;
+  width: 40px;
+  z-index: 1;
+  transition: all 0.3s linear 0s;
+}
+.owl-carousel .owl-nav div.owl-prev {
+  left: 20px;
+}
+.owl-carousel .owl-nav div.owl-prev:hover {
+  /* background: $primary-color; */
+}
+.owl-carousel .owl-nav div.owl-next:hover {
+  /* background: $primary-color; */
+}
+.owl-carousel:hover .owl-nav div.owl-next {
+  opacity: 1 !important;
+  right: 0 !important;
+}
+.owl-carousel:hover .owl-nav div.owl-prev {
+  opacity: 1 !important;
+  left: 0 !important;
 }
