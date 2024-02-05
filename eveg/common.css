@@ -426,3 +426,78 @@ form.customerDetails button{
 #customiseButton{
     width: 115px;
 }
+
+.h1{
+    color: var(--colour-1);
+}
+
+.contact-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    text-align: left;
+    width: 50%;
+    padding-left: 25%;
+
+  }
+  
+  .contact-info p {
+    font-size: 20px;
+    color: var(--colour-1);
+    padding:10px;
+    padding-left: 0px;
+  }
+  
+  .contact-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contact-info li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--colour-1);
+  }
+  
+  /* Message Form Styles */
+  .message-form {
+    margin-top: 30px;
+    text-align: left;
+  }
+  
+  .message-form h2 {
+    font-size: 20px;
+    color: var(--colour-1);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #messageForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  #messageForm label {
+    font-size: 16px;
+    margin-top: 10px;
+    color: var(--colour-1);
+  }
+  
+  #userMessage,
+  #userEmail {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  #userMessage {
+    resize: vertical; /* Allow vertical resizing of textarea */
+  }
+  .container{
+    text-align: center;
+  }
