@@ -167,7 +167,7 @@ html, body {
     border-right: solid 5px hsl(var(--colour-1-h),var(--colour-1-s),var(--colour-1-l));
 }
 
-.productList{
+ .custom-section .productList{
     margin-bottom: 2rem;
     /* margin-left: 2rem;
     margin-right: 2rem; */
@@ -485,7 +485,7 @@ video {
     vertical-align: middle;
 }
 
-#cookieMessage{
+ .custom-section #cookieMessage{
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -514,7 +514,7 @@ body{
     padding: 0;
 }
 
-a{
+.custom-section a{
     color: var(--colour-4);
 }
 a:visited{
