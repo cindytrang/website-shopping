@@ -44,7 +44,7 @@ input{
     appearance: textfield;
 }
 
-.btn{
+.custom-section .btn{
     background-color: var(--colour-1);
     color: var(--colour-2);
     width: 28px;
@@ -52,6 +52,7 @@ input{
     border-radius: 50%;
     border: none;
     font-size: 15px;
+    padding: 0;
 }
 
 h2{
