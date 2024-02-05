@@ -76,13 +76,18 @@ h2{
     width: 20%;
     position: relative;
     background-color: var(--colour-2);
+    box-sizing: border-box;
+    @media (max-width: 992px) {
+        width: 25%; /* 4 products per row */
+    }
 
-}
+    @media (max-width: 768px) {
+        width: 33.33%; /* 3 products per row */
+    }
 
-  
-
-.shop-product-price{
-    display: contents;
+    @media (max-width: 576px) {
+        width: 50%; /* 2 product per row */
+    }
 }
 
 .searchbuttons span{
