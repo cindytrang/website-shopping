@@ -169,8 +169,8 @@ html, body {
 
 .productList{
     margin-bottom: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /*Display, flex-wrap and justify content create the grid structure for the items, aligned in the center.*/
