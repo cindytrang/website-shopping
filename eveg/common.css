@@ -8,6 +8,10 @@
     flex-direction: column-reverse;
 }
 
+body.pace-done #page-content {
+  all: unset;
+}
+
 button{
     background-color: var(--colour-1); 
     color: var(--colour-2);
@@ -55,6 +59,7 @@ h2{
     color: var(--colour-1);
     margin-top: 20px;
 }
+
 .shop-product-img img{
     height: 100%;
     width: 100%;
@@ -78,10 +83,7 @@ h2{
     width: 20%;
     position: relative;
     background-color: var(--colour-2);
-
 }
-
-  
 
 .shop-product-price{
     display: contents;
@@ -332,6 +334,7 @@ video {
   margin-bottom: 0;
 }
 
+
 .banner .products {
   padding-top: 115px;
   z-index: 5;
@@ -464,6 +467,7 @@ video {
 .page-header .navbar .shopping-cart .shopping-cart-list .media p {
   margin: 0;
 }
+
 .page-header .navbar .shopping-cart .shopping-cart-list .media .price span {
   display: inline-block;
   margin-right: 5px;

@@ -25,7 +25,11 @@
   <script type="text/javascript" src="products.js"></script>
   <script src="shop.js"></script>
   <title>E-Veg Shop</title>
-
+  <style>
+    .custom-section .card {
+      border: 1px solid var(--colour-4);
+    }
+  </style>
 </head>
 <body> 
     <div class="index-list">
@@ -115,6 +119,7 @@
     </nav>
   </div>
   </div>
+  </div>
 
   <!-- <div class="hero">
     <div class="navbar">
@@ -137,10 +142,9 @@
       <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
     </div>
   </div> -->
-  <div id="page-content" class="page-content">
+  <div id="page-content" class="page-content custom-section">
     <div class="banner">
       <div class="products">
-
       <div onclick=transformProduct() class="productList">
         <script src="products.js"></script>
       </div>
