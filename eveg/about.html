@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="colours.css">
+    <title>FAQ Page</title>
+    <!-- <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        } */
+
+        
+    </style> -->
+</head>
+<body>
+
+<div class="faq-section">
+    <h1>Frequently Asked Questions</h1>
+
+        <input type="text" id="searchbox" placeholder="Search FAQs..." oninput="filterFaqs()"></input>
+       
+
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">Who are we?</div>
+        <div class="faq-answer">We are E-Veg, a dedicated online platform providing you with the freshest and highest-quality vegetables. Our team is passionate about delivering farm-fresh produce directly to your doorstep.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">What payment methods do you accept?</div>
+        <div class="faq-answer">We accept credit/debit cards and secure online payment gateways.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">How can I track my order?</div>
+        <div class="faq-answer">Once your order is dispatched, you will receive a confirmation email with a tracking link.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">Where do our vegetables come from?</div>
+        <div class="faq-answer">At E-veg our vegetables are sourced from local farmers and trusted suppliers who share our commitment to quality and sustainability. We prioritize freshness, ensuring that you receive the best produce available.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">How can I place an order?</div>
+        <div class="faq-answer">Placing an order with us is easy! Simply browse our selection, add your desired vegetables to your cart, and proceed to checkout. Follow the steps to provide delivery details and complete your purchase.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">When will I receive my order?</div>
+        <div class="faq-answer">Delivery times vary based on your location and selected delivery slot. You can choose a convenient time during the checkout process, and we will make every effort to deliver your order within the specified time frame.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="plus-minus-sign">+</div>
+        <div class="faq-question">Do you offer returns or refunds?</div>
+        <div class="faq-answer">Yes, we have a hassle-free return policy. If you are not satisfied with your purchase, please contact us within 30 days, and we will arrange for a return and refund.</div>
+    </div>
+    
+
+
+    <!-- Add more FAQ items as needed -->
+
+</div>
+
+<script>
+    // Add JavaScript for toggle functionality
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     var faqQuestions = document.querySelectorAll('.faq-question');
+
+    //     faqQuestions.forEach(function (question) {
+    //         question.addEventListener('click', function () {
+    //             var answer = this.nextElementSibling;
+    //             answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    //             this.classList.toggle('active');
+    //         });
+    //     });
+    // });
+    function toggleFaq(faqItem) {
+        var answer = faqItem.querySelector('.faq-answer');
+        var plusMinusSign = faqItem.querySelector('.plus-minus-sign');
+
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            plusMinusSign.textContent = '+';
+        } else {
+            answer.style.display = 'block';
+            plusMinusSign.textContent = '-';
+        }
+
+        faqItem.classList.toggle('active');
+    }
+
+    function filterFaqs() {
+        var searchInput = document.getElementById('searchbox');
+        var filter = searchInput.value.toUpperCase();
+        var faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(function (faqItem) {
+            var question = faqItem.querySelector('.faq-question');
+            var textContent = question.textContent || question.innerText;
+
+            if (textContent.toUpperCase().indexOf(filter) > -1) {
+                faqItem.style.display = '';
+            } else {
+                faqItem.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
