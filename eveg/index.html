@@ -7,37 +7,142 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="colours.css">
-
+  <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/o2system-ui/o2system-ui.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/owl-carousel/owl-carousel.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery-migrate.js"></script>
+  <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+  <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+  <script type="text/javascript" src="packages/o2system-ui/o2system-ui.js"></script>
+  <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+  <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
+  <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+  <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
+  <script type="text/javascript" src="products.js"></script>
   <script src="shop.js"></script>
   <title>E-Veg Shop</title>
+  <style>
+    .custom-section .card {
+      border: 1px solid var(--colour-4);
+    }
+    body  .custom-section {
+        box-sizing: content-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #333;
+        line-height: 1rem;
+        font-size: 14px;
+        margin: 0;
+        font-weight: 400;
+        background-color: #fff;
+    }
 
+  </style>
 </head>
 <body> 
-    
-    <div class="hero">
-      <img class="logo" src="images/e_veg_logo.png"></img>
-    <div class="navbar">
-      <div class="toggle-wrapper">
-      <a href="#" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </a>
-    </div>
-      <div class="navbar-links">
-        <ul>
-          <li><a href="#"><span>Contact</span></a></li>
-          <li><a id="search-link" href="#"><span>Search</span></a></li>
-          <li><a href="#"><span>About</span></a></li>
-          <li class="spacer">&nbsp;</li>
-          <li class="welcome"><a>Welcome Test User</a></li>
-          <li><a class="basket" href="checkout.html"><span>
-            Checkout</span></a></li>
-        </ul>
+    <div class="index-list">
+    <div class="page-header">
+    <div class="container">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
+        <!-- Navbar Brand -->
+        <a href="index.html" class="navbar-brand">
+          <img class="logo" src="images/e_veg_logo.png"></img>
+        </a>
+
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Menu -->
+        <div class="collapse navbar-collapse" id="navbarcollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="color: black;">
+              <a href="homepage.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="index.html" class="nav-link">Shop</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="register.html" class="nav-link">Register</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="login.html" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="#" class="nav-link"><span>Contact</span></a>
+            </li>
+            <li class="nav-item"style="color: black;">
+              <a href="#" class="nav-link"><span>About</span></a>
+            </li>
+            <li class="nav-item"style="color: black;">
+              <a class="nav-link" href="checkout.html"><span>Checkout</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar-header"><img src="images/e_veg_logo.png" alt="User Avatar"></div> John Doe
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                <a class="dropdown-item" href="setting.html">Settings</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
+              </a>
+              <div class="dropdown-menu shopping-cart">
+                  <ul>
+                      <li>
+                          <div class="drop-title">Your Cart</div>
+                      </li>
+                      <li>
+                          <div class="shopping-cart-list">
+                              <div class="media">
+                                  <img class="d-flex mr-3" src="images/img/fish.jpg" width="60">
+                                  <div class="media-body">
+                                      <h5><a href="javascript:void(0)">Carrot</a></h5>
+                                      <p class="price">
+                                          <span class="discount text-muted">Rp. 700.000</span>
+                                          <span>Rp. 100.000</span>
+                                      </p>
+                                      <p class="text-muted">Qty: 1</p>
+                                  </div>
+                              </div>
+                      <li>
+                          <div class="drop-title d-flex justify-content-between">
+                              <span>Total:</span>
+                              <span class="text-primary"><strong>Rp. 2000.000</strong></span>
+                          </div>
+                      </li>
+                      <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
+                          <a href="cart.html" class="btn btn-secondary">View Cart</a>
+                          <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                      </li>
+                  </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+  </div>
+  </div>
+  </div>
 
+  <!-- <div class="hero">
+    <div class="navbar">
+    <div class="toggle-wrapper">
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
     </div>
-
+      <a id="search-link" href="#"><span>Search</span></a>
+    </div>
     <div class="search-bar">
       <div class="searchbuttons">
         <a id="closesearchbutton" href="#">
@@ -47,28 +152,32 @@
       <input type="text" id="searchbox"></input>
       <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
     </div>
+  </div> -->
+  <div id="page-content" class="page-content custom-section">
+    <div class="banner">
+      <div class="products">
+      <div onclick=transformProduct() class="productList">
+        <script src="products.js"></script>
+      </div>
+      <div class="about">
+        <div>&copy; 2021 InterVeg Coventry Ltd.</div>
+        <div>Fresh produce from the Midland's green countryside.</div>
+      </div>
+      <div id="cookieMessage"> 
+        <h3> This site uses cookies </h3>
+        By using this site, you are consenting to our use of cookies
+        We use cookies purely for the functionality of the website - to store the products that are in your basket.
+        <br>
+        For further details of how we use your data, please see our <a href="cookiePolicy.html">cookie policy</a>
+        <p></p>
+        <br>
+      <button id = "acceptButton"><a id="acceptCookies">Accept All</a></button>
+        <button id = "rejectButton"><a id="rejectCookies">Reject All</a></button>
+        <button id = "customiseButton"><a id="customiseCookies">Customise </a></button>
+      </div>
+      </div>
+      </div>
   </div>
-    <div onclick=transformProduct() class="productList">
-      <script src="products.js"></script>
-        
-    </div>
 
-    <div class="about">
-      <div>&copy; 2021 InterVeg Coventry Ltd.</div>
-      <div>Fresh produce from the Midland's green countryside.</div>
-    </div>
-    <div id="cookieMessage"> 
-      <h3> This site uses cookies </h3>
-      By using this site, you are consenting to our use of cookies
-      We use cookies purely for the functionality of the website - to store the products that are in your basket.
-      <br>
-      For further details of how we use your data, please see our <a href="cookiePolicy.html">cookie policy</a>
-      <p></p>
-      <br>
-    <button id = "acceptButton"><a id="acceptCookies">Accept All</a></button>
-      <button id = "rejectButton"><a id="rejectCookies">Reject All</a></button>
-      <button id = "customiseButton"><a id="customiseCookies">Customise </a></button>
-    </div>
-    
 </body>
 </html>
