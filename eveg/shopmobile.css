@@ -43,3 +43,42 @@
 .productBasketDiv {
     margin-top: 10px; /* Add spacing between Add button and adjust buttons */
 }
+
+@media (max-width: 575.98px) {
+    .shop-product.card {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto; /* Center the card horizontally */
+    }
+
+    .card__content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .shop-product-details.shop-product-left {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        /* width: 100% */
+    }
+
+    .shop-product-details.shop-product-title {
+        margin-right: 10px; /* Adjust spacing between title and image */
+    }
+
+    .shop-product-details.shop-product-right {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        /* width: 100%; */
+    }
+
+    .shop-product-details.shop-product-price,
+    .shop-product-details.shop-product-units,
+    .shop-product-buying {
+        margin-top: 5px; /* Adjust spacing between items on the right */
+    }
+}
