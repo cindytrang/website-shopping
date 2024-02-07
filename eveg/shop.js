@@ -1,4 +1,4 @@
-let productDetails = {};
+let productDetails = []; 
 let searchStr = "";
 let basket = {};
 //Each product is based on a 'card'; a box that contains information about that product.
@@ -22,7 +22,7 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
                 <div class="productBasketDiv"><button class="addToBasket">Add</button>
                     <div class="adjustDiv">
                         <button class="btn adjustDown">-</button>
-                        <input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0" type="number">
+                        <input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0">
                         <button class="btn adjustUp">+</button>
                     </div>
                 </div>
@@ -72,8 +72,26 @@ function init() {
       setCookie('cookieMessageSeen', true);
       document.getElementById('cookieMessage').style.display = 'none';
     });
-
+    resetListeners();
     initProducts(redraw);
+    
+    // Define a function to toggle the visibility of the dropdown menu
+    function toggleDropdownMenu() {
+        const dropdownMenu = document.querySelector('.dropdown-menu.shopping-cart');
+        dropdownMenu.classList.toggle('show');
+    }
+
+    const basketIcon = document.querySelector('.nav-item.dropdown .fa.fa-shopping-basket');
+    basketIcon.addEventListener('click', toggleDropdownMenu);
+  
+    // Add event listeners to both addToBasket buttons and the shopping basket icon
+    const addToBasketButtons = document.querySelectorAll('.addToBasket');
+    addToBasketButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            addToBasketClicked(event);
+            toggleDropdownMenu();
+        });
+    });
   }
 
 
@@ -202,8 +220,6 @@ function init() {
     updateQuantityInputs();
   }
   
-  window.addEventListener("load", init);
-
   function updateQuantityInputs(){
     for(let buyInput of document.querySelectorAll(".buyInput")){
       let quantity = basket[buyInput.getAttribute("data-num")];
@@ -217,13 +233,16 @@ function init() {
   //Recalculate basket
   function refreshBasket(){
     let total = 0;
+    let totalCount = 0;
     for(const productID in basket){
       let quantity = basket[productID];
       let price = productDetails[productID].price;
       total = total + (price * quantity);
+      totalCount++;
     }
     setCookie('basket', JSON.stringify(basket));
-    try{
+    try {
+      document.querySelector("#totalItems").innerHTML = totalCount;
       document.querySelector("#basketNumTotal").innerHTML = (total / 100).toFixed(2);
     }catch(e){
       
@@ -231,3 +250,48 @@ function init() {
     return total;
   }
 
+function addToBasketClicked(event) {
+    let productId = event.target.parentElement.getAttribute('data-num');
+    updateShoppingCartDropdown(); // Update the shopping cart dropdown
+}
+
+function updateShoppingCartDropdown() {
+    let cartItemsContainer = document.getElementById('cartItemsContainer');
+    cartItemsContainer.innerHTML = ''; // Clear previous items
+
+    let totalPrice = 0;
+
+    for (const productID in basket) {
+        const quantity = basket[productID];
+        const product = productDetails[productID];
+        const productTotal = productDetails[productID].price * quantity;
+        totalPrice += productTotal;
+
+        const listItem = document.createElement('li');
+        listItem.classList.add('shopping-cart-item'); // Add a class to style each item if needed
+        listItem.innerHTML = `
+            <div class="media ml-1 pl-4 p-2">
+              <div class="d-flex align-items-center">
+                 <img class="mr-3" src="images/${product.image}" width="60">
+              </div>
+              <div class="media-body">
+                  <h5><a>${product.name}</a></h5>
+                  <p><div class="shop-product-details shop-product-price" data-field="price" data-num="0">
+                      <span class="discount text-muted">Qty: ${quantity}</span>
+                      <span>£${(productTotal / 100).toFixed(2)}</span>
+                  </div></p>
+              </div>
+          </div>
+          `;
+        cartItemsContainer.appendChild(listItem);
+    }
+
+    // Add total price to the dropdown
+    const totalItem = document.createElement('li');
+    cartItemsContainer.appendChild(totalItem);
+
+    // Update the total price displayed outside the dropdown
+    document.getElementById('totalPrice').textContent = (totalPrice / 100).toFixed(2);
+}
+
+window.addEventListener("load", init);

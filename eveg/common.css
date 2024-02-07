@@ -2,6 +2,20 @@
 .return {
     padding: 20px;
 }
+.nav-item.dropdown .dropdown-menu.shopping-cart .text-primary,
+.nav-item.dropdown .dropdown-menu.shopping-cart .text-primary strong {
+    color: var(--colour-1) !important; /* Your custom color */
+}
+
+.container .badge.badge-primary{
+    background-color: var(--colour-4);
+    padding: 0.25rem 0.5rem;
+
+}
+.container a {
+    color: var(--colour-5);
+}
+
 .productBasketDiv{
     width: 128px;
     display: flex;
@@ -18,6 +32,8 @@ button{
     font-size: 100%;
     border: none;
 }
+
+
 .addToBasket{
     background-color: var(--colour-1);
     color: var(--colour-2);
@@ -384,10 +400,11 @@ video {
 
 .index-list .page-header .navbar .navbar-nav .nav-link{
   color: var(--colour-1);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  font-family: inherit;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: left;
 }
 
 .page-header .navbar .navbar-nav .nav-link {
@@ -446,6 +463,9 @@ video {
 .page-header .navbar .shopping-cart .drop-title {
   padding: 11px 20px 15px;
   border-bottom: 1px solid hsla(var(--colour-1-h), var(--colour-1-s), var(--colour-1-l), 0.13);
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: left;
 }
 
 .page-header .navbar .shopping-cart .drop-title.d-flex {

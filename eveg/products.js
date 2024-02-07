@@ -42,8 +42,8 @@ function hideBox() {
 }
 
 function transformProduct(){
-  var myDiv = document.getElementsById("shop-product");
-  myDiv.classList = "shop-bigproduct";
+  // var myDiv = document.getElementsById("shop-product");
+  // myDiv.classList = "shop-bigproduct";
 }
 
 
