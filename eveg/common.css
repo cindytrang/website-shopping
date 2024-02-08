@@ -9,9 +9,8 @@
 
 .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer;
-    border: 1px solid var(--colour-4);
+    border: 2px solid rgba(0,0,0,.5);
 }
-
 
 .container .badge.badge-primary{
     background-color: var(--colour-4);
@@ -28,8 +27,7 @@
 }
 
 .productBasketDiv{
-    width: 128px;
-    width: 170px;
+    width: 158px;
     display: flex;
     flex-direction: column-reverse;
 }
@@ -454,7 +452,7 @@ video {
 
 .index-list .page-header .navbar .navbar-nav .nav-link{
   color: var(--colour-1);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -463,10 +461,11 @@ video {
 
 .page-header .navbar .navbar-nav .nav-link {
   color: var(--colour-2);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  font-family: inherit;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: left;
 }
 
 
@@ -748,10 +747,14 @@ h1{
   #userMessage {
     resize: vertical; /* Allow vertical resizing of textarea */
   }
+
   .container{
     text-align: center;
-    padding-top: 3%;
     color: var(--colour-1);
+  }
+  
+  .contact-list .container {
+    padding-top: 115px;
   }
 
   .form-container {
