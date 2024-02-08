@@ -1,4 +1,4 @@
-let productDetails = {};
+let productDetails = []; 
 let searchStr = "";
 let basket = {};
 //Each product is based on a 'card'; a box that contains information about that product.
@@ -8,59 +8,90 @@ let basket = {};
 //The adjustDown and adjustUp buttons have their behaviour specified below, but you can change this if you like
 //To change the quantity of a product, change the value of the input (with the class of buyInput), you can then recalculate the basket with refreshBasket()
 //Or you can adjust the basket object via javascript and call updateQuantityInputs() and refreshBasket()
+
 var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
-<div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
-<div class="card__content" data-num="[EVEGPRODUCT#]">
-<div class="shop-product-details shop-product-img" data-field="img" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-details shop-product-price" data-field="price" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-details shop-product-units" data-field="units" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-buying" data-num="[EVEGPRODUCT#]">
-<div class="productBasketDiv"><button class="addToBasket">Add</button>
-<div class="adjustDiv"><button class="btn adjustDown">-</button>
-<input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0" type="number">
-<button class="btn adjustUp">+</button></div></div></div></div></div>`;
+    <div class="card__content" data-num="[EVEGPRODUCT#]">
+        <div class="shop-product-details shop-product-left">
+            <div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-details shop-product-img" data-field="img" data-num="[EVEGPRODUCT#]"></div>
+        </div>
+        <div class="shop-product-details shop-product-right">
+            <div class="shop-product-details shop-product-price" data-field="price" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-details shop-product-units" data-field="units" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-buying" data-num="[EVEGPRODUCT#]">
+                <div class="productBasketDiv"><button class="addToBasket">Add</button>
+                    <div class="adjustDiv">
+                        <button class="btn adjustDown">-</button>
+                        <input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0">
+                        <button class="btn adjustUp">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
 
-  function init(){
-    const toggleButton = document.getElementsByClassName('toggle-button')[0];
-    const hero = document.getElementsByClassName('hero')[0];
-    const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 
-    //When the toggle button is pressed (if visible by the screen size, the menu is shown)
-    toggleButton.addEventListener('click',()=>{
-      navbarLinks.classList.toggle('active');
-      hero.classList.toggle('menuactive');
-    });
+function init() {
+    // const toggleButton = document.getElementsByClassName('toggle-button')[0];
+    // const hero = document.getElementsByClassName('hero')[0];
+    // // const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 
-    const searchBar = document.getElementsByClassName('search-bar')[0];
-    //Show the search bar when the search link is pressed
-    document.getElementById('search-link').addEventListener('click',()=>{
-      searchBar.classList.toggle('active');
-      document.getElementById('searchbox').focus();
-    });
+    // //When the toggle button is pressed (if visible by the screen size, the menu is shown)
+    // toggleButton.addEventListener('click',()=>{
+    //   navbarLinks.classList.toggle('active');
+    //   hero.classList.toggle('menuactive');
+    // });
 
-    //Close the search bar
-    document.getElementById('searchbutton').addEventListener('click', ()=>{
-      searchStr = document.getElementById('searchbox').value;
-      redraw();
-    });
+    // const searchBar = document.getElementsByClassName('search-bar')[0];
+    // //Show the search bar when the search link is pressed
+    // document.getElementById('search-link').addEventListener('click',()=>{
+    //   searchBar.classList.toggle('active');
+    //   document.getElementById('searchbox').focus();
+    // });
 
-    //Close the search bar
-    document.getElementById('closesearchbutton').addEventListener('click', ()=>{
-      searchStr = "";
-      searchBar.classList.remove('active');
-      redraw();
-    });
+    // //Close the search bar
+    // document.getElementById('searchbutton').addEventListener('click', ()=>{
+    //   searchStr = document.getElementById('searchbox').value;
+    //   redraw();
+    // });
 
+    // //Close the search bar
+    // document.getElementById('closesearchbutton').addEventListener('click', ()=>{
+    //   searchStr = "";
+    //   searchBar.classList.remove('active');
+    //   redraw();
+    // });
+
+    if(getCookie("cookieMessageSeen") == "true"){
+      document.getElementById('cookieMessage').style.display = 'none';
+    }
+  
     //Close the cookies message
     document.getElementById('acceptCookies').addEventListener('click', ()=>{
       setCookie('cookieMessageSeen', true);
       document.getElementById('cookieMessage').style.display = 'none';
     });
-
-    if(getCookie("cookieMessageSeen") == "true"){
-      document.getElementById('cookieMessage').style.display = 'none';
-    }
+    resetListeners();
     initProducts(redraw);
+    
+    // Define a function to toggle the visibility of the dropdown menu
+    function toggleDropdownMenu() {
+        const dropdownMenu = document.querySelector('.dropdown-menu.shopping-cart');
+        dropdownMenu.classList.toggle('show');
+    }
+
+    const basketIcon = document.querySelector('.nav-item.dropdown .fa.fa-shopping-basket');
+    basketIcon.addEventListener('click', toggleDropdownMenu);
+  
+    // Add event listeners to both addToBasket buttons and the shopping basket icon
+    const addToBasketButtons = document.querySelectorAll('.addToBasket');
+    addToBasketButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            addToBasketClicked(event);
+            toggleDropdownMenu();
+        });
+    });
   }
 
 
@@ -89,8 +120,8 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
     }
     elements = document.getElementsByClassName("addToBasket");
     for(eIn = 0; eIn < elements.length; eIn++){
-      //elements[eIn].removeEventListener("click",increment);
-      //elements[eIn].addEventListener("click",increment);
+      elements[eIn].removeEventListener("click",checkBasket);
+      elements[eIn].addEventListener("click",checkBasket);
     }
   }
 
@@ -99,6 +130,23 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
   function inputchange(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
     changeQuantity(thisID,ev.target.parentElement.closest(".shop-product-buying").getElementsByTagName("input")[0].value);
+  }
+
+  function checkBasket(){
+    console.log(basket); 
+    console.log(Object.keys(basket).length);
+    if (Object.keys(basket).length == 0){
+      console.log("here");
+          fetch('errorPopUp.html')
+          .then(response => response.text())
+          .then(html => {
+            var container = document.getElementById('externalPopUpContainer'); 
+            container.innerHTML = html;
+            showError('Please add items before adding to basket');
+          })
+          .catch(error => console.error('Error fetching errorPopUp.html', error));
+
+    } 
   }
 
   /*
@@ -126,6 +174,15 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
     if(basket[thisID] === undefined){
       changeQuantity(thisID,0);
+      fetch('errorPopUp.html')
+          .then(response => response.text())
+          .then(html => {
+            var container = document.getElementById('externalPopUpContainer'); 
+            container.innerHTML = html;
+            showError('You cannot enter a negative number of items');
+          })
+          .catch(error => console.error('Error fetching errorPopUp.html', error));
+
     }else{
       if(basket[thisID] > 0){
         changeQuantity(thisID,parseInt(basket[thisID])-1);
@@ -189,8 +246,6 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
     updateQuantityInputs();
   }
   
-  window.addEventListener("load", init);
-
   function updateQuantityInputs(){
     for(let buyInput of document.querySelectorAll(".buyInput")){
       let quantity = basket[buyInput.getAttribute("data-num")];
@@ -204,13 +259,16 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
   //Recalculate basket
   function refreshBasket(){
     let total = 0;
+    let totalCount = 0;
     for(const productID in basket){
       let quantity = basket[productID];
       let price = productDetails[productID].price;
       total = total + (price * quantity);
+      totalCount++;
     }
     setCookie('basket', JSON.stringify(basket));
-    try{
+    try {
+      document.querySelector("#totalItems").innerHTML = totalCount;
       document.querySelector("#basketNumTotal").innerHTML = (total / 100).toFixed(2);
     }catch(e){
       
@@ -218,3 +276,63 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
     return total;
   }
 
+function addToBasketClicked(event) {
+    let productId = event.target.parentElement.getAttribute('data-num');
+    updateShoppingCartDropdown(); // Update the shopping cart dropdown
+}
+
+function updateShoppingCartDropdown() {
+    let cartItemsContainer = document.getElementById('cartItemsContainer');
+    cartItemsContainer.innerHTML = ''; // Clear previous items
+
+    let totalPrice = 0;
+
+    for (const productID in basket) {
+        const quantity = basket[productID];
+        const product = productDetails[productID];
+        const productTotal = productDetails[productID].price * quantity;
+        totalPrice += productTotal;
+
+        const listItem = document.createElement('li');
+        listItem.classList.add('shopping-cart-item'); // Add a class to style each item if needed
+        listItem.innerHTML = `
+            <div class="media ml-1 pl-4 p-2">
+              <div class="d-flex align-items-center">
+                 <img class="mr-3" src="images/${product.image}" width="60">
+              </div>
+              <div class="media-body">
+                  <h5><a>${product.name}</a></h5>
+                  <div class="shop-product-details shop-product-price" data-field="price" data-num="0">
+                  <span>£${(productTotal / 100).toFixed(2)}</span>
+                  <p><span class="discount text-muted">Qty: ${quantity}</span>
+                  </div></p>
+              </div>
+          </div>
+          `;
+        cartItemsContainer.appendChild(listItem);
+    }
+
+    // Add total price to the dropdown
+    const totalItem = document.createElement('li');
+    cartItemsContainer.appendChild(totalItem);
+
+    // Update the total price displayed outside the dropdown
+    document.getElementById('totalPrice').textContent = (totalPrice / 100).toFixed(2);
+}
+
+window.addEventListener("load", init);
+
+function showError(message) {
+  //display the error pop up and the overlay 
+  document.getElementById('errorPopUp').style.display = 'block'; 
+  document.getElementById('overlay').style.display = 'block'; 
+
+  //set the error message for the pop up 
+  document.getElementById('errorMessage').innerText = message; 
+}
+
+function hideError(){
+  //hide the pop up and overlay 
+  document.getElementById('errorPopUp').style.display = 'none'; 
+  document.getElementById('overlay').style.display = 'none';
+}
