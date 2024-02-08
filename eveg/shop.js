@@ -233,7 +233,7 @@ function init() {
           element.innerText = productDetails[num].name;
           break;
         case "img":
-          element.innerHTML = "<span class=\"imgspacer\"></span><img src=\"images/"+productDetails[num].image + "\"></img>";
+          element.innerHTML = "<span class=\"imgspacer\"></span><div class=\"square-image-container\"><img src=\"images/"+productDetails[num].image + "\" alt="+productDetails[num].name+"></img></div>";
           break;
         case "price":
           element.innerHTML = "<span>£"+(productDetails[num].price/100).toFixed(2)+"</span>";
