@@ -22,10 +22,22 @@
     color: var(--colour-5);
 }
 
+.productBasketWrapper {
+    display: table-cell;
+    text-align: center; 
+}
+
 .productBasketDiv{
     width: 128px;
+    width: 170px;
     display: flex;
     flex-direction: column-reverse;
+}
+
+.adjustDiv {
+  display: inline-block;
+  right: auto;
+  left: auto;
 }
 
 body.pace-done #page-content {
@@ -63,6 +75,7 @@ button:focus {
     width: 30%;
     height:28px;
     font-size: 20px;
+    text-align: center;
     appearance: textfield;
 }
 input:hover{
@@ -81,6 +94,7 @@ input{
     border: none;
     font-size: 15px;
     padding: 0;
+    margin-bottom: 3px;
 }
 
 h2{
