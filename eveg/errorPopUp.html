@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="common.css">
 </head>
 
-<div id="overlay" onclick="hideError()"></div>
+<div id="overlay" onclick="hideError()" role = "dialog" aria-labelledby="error-title" aria-describedby="error-message"></div>
 <div id="externalPopUpContainer">
 <div id="errorPopUp">
     <p id="errorMessage"></p>
-    <button id="closeErrorButton" onclick="hideError()">Close</button>
+    <button id="closeErrorButton" onclick="hideError()" tabindex="0">Close</button>
 </div>
 </div>

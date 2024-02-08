@@ -329,6 +329,9 @@ function showError(message) {
 
   //set the error message for the pop up 
   document.getElementById('errorMessage').innerText = message; 
+  const errorPopUp = document.getElementById('errorPopUp');
+  const closeButton = errorPopUp.querySelector('closeErrorButton');
+  closeButton.focus();
 }
 
 function hideError(){

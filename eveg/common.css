@@ -53,6 +53,12 @@ button:hover{
     background-color: var(--colour-4);
     color:  var(--colour-2);
 }
+
+button:focus {
+    box-shadow: 0 0 15px #3498db; /* Add a blue shadow on focus */
+    transition: none;
+  }
+
 .buyInput {
     width: 30%;
     height:28px;
