@@ -147,7 +147,6 @@ function init() {
             showError('Please add items before adding to basket');
           })
           .catch(error => console.error('Error fetching errorPopUp.html', error));
-
     } 
   }
 
