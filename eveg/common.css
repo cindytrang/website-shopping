@@ -968,3 +968,11 @@ input[type="password"]:hover{
   color: var(--colour-5);
   padding-top: 2%;
 }
+
+.checkout-container{
+  padding-top: 3%;
+}
+
+.checkout-table{
+  width: 60%;
+}
