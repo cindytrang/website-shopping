@@ -9,6 +9,9 @@ let basket = {};
 //To change the quantity of a product, change the value of the input (with the class of buyInput), you can then recalculate the basket with refreshBasket()
 //Or you can adjust the basket object via javascript and call updateQuantityInputs() and refreshBasket()
 var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
+<div class="like" data-field="likeProduct" data-num="[EVEGPRODUCT#]">
+<button class="like-button">Test Text</button>'
+</div>
 <div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
 <div class="card__content" data-num="[EVEGPRODUCT#]">
 <div class="shop-product-details shop-product-img" data-field="img" data-num="[EVEGPRODUCT#]"></div>
@@ -93,6 +96,50 @@ function init() {
       //elements[eIn].removeEventListener("click",increment);
       //elements[eIn].addEventListener("click",increment);
     }
+    elements = document.getElementsByClassName("like");
+    for(eIn = 0; eIn < elements.length; eIn++){
+      elements[eIn].removeEventListener("click",toggleLike);
+      elements[eIn].addEventListener("click",toggleLike);
+    }
+  }
+
+  function toggleLike(ev) {
+    var productNum = ev.target.parentElement.getAttribute("data-num");
+    var buttonLiked = productDetails[productNum].liked
+    console.log("Product num is: " + productNum);
+    console.log("button value is: " + ev.target.getElementsByClassName("like-button"))
+   
+    if (buttonLiked == 0) {
+      productDetails[productNum].liked = 1;
+      console.log("button value is: " + productDetails[productNum].liked)
+    } else {
+      productDetails[productNum].liked = 0;
+      console.log("button value is: " + productDetails[productNum].liked)
+    }
+
+    var heartIconEmpty = document.createElement('i');
+    heartIconEmpty.id = 'heartIconEmpty';
+    heartIconEmpty.className = 'far fa-heart';
+
+    // Get the like button
+    var likeButton = ev.target.getElementsByClassName("like-button");
+
+    // Append the <i> element to the like button
+    //likeButton.appendChild(heartIconEmpty);
+
+    
+
+    likeButton = createLike(productDetails[productNum].liked);
+  }
+
+  function createLike(isLiked){
+    console.log("Checking the like button")
+    if (isLiked == 0){
+      return '<i id="heartIconEmpty" class="far fa-heart" ></i>';
+    }
+    else{
+      return '<i id="heartIconFull" class="fas fa-heart" ></i>';
+    }
   }
 
 
@@ -136,6 +183,7 @@ function init() {
 
   function filterFunction(a){
     /*This demonstrates how to filter based on the search term*/
+
     return a.name.toLowerCase().includes(searchStr.toLowerCase());
 
     //If you wanted to just filter based on fruit/veg you could do something like this:
@@ -144,13 +192,17 @@ function init() {
     // return true;
   }
 
+  
+
   function sortFunction(a,b){
     return a.price > b.price;
   }
 
   //Redraw all products based on the card template
   function redraw(){
-    
+
+    console.log("Redrawing...")
+
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
 
@@ -183,10 +235,40 @@ function init() {
         case "units":
           element.innerHTML = "<span>"+productDetails[num].packsize + " " + productDetails[num].units+"</span>";
           break;
-      }
 
+      }
+      
     });
+
+    document.querySelectorAll(".like").forEach(function(element){
+      var field = element.getAttribute("data-field");
+      var num = element.getAttribute("data-num");
+      switch(field){
+        case "likeProduct":
+          console.log("in the like, like num is: " + productDetails[num].liked);
+          element.innerHTML = createLike(productDetails[num].liked);
+          break;
+
+      }
+      
+    });
+
+
+    
+
+
+    
+
+
+  
+
+    
+      
+      
+
+
     resetListeners();
+
     updateQuantityInputs();
   }
   
@@ -218,4 +300,11 @@ function init() {
     }
     return total;
   }
+
+
+  
+
+// Attach event listener to like button
+
+
 

@@ -90,6 +90,57 @@ h2{
     display: contents;
 }
 
+.like{
+  float: inline-end;
+  align-items: end;
+  color: var(--colour-3);
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.like-button i {
+  color: #ff0000; /* Red color for heart */
+  font-size: 24px;
+}
+.liked {
+  color: #ff0000; /* Change heart color when liked */
+}
+
+.search {
+  border: 1px solid red;
+  height: 100px;
+}
+
+.search-container {
+  padding-top: 5%;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+  padding-bottom: 0%;
+  
+}
+
+input[type="text"], select .search-container{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+ul .search-container{
+  list-style-type: none;
+  padding: 0;
+}
+
+li .search-container{
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child .search-container{
+  border-bottom: none;
+}
+
 .searchbuttons span{
     color: white;
     width: 1em;
@@ -97,6 +148,7 @@ h2{
     padding-right: 1em;
     padding-top:0.25em;
     padding: 0 1em;
+    height:fit-content;
 }
 .search-bar.active{
     display:flex;
@@ -112,7 +164,7 @@ h2{
     box-shadow: 5px 5px #808080;
     border:0;
     border-bottom:1px solid #555;  
-    width:0;
+    width: 100px;;
     padding-left: 2em;
     padding-right: 2em;
     font-size: inherit;
@@ -176,6 +228,7 @@ html, body {
     flex-wrap: wrap;
     justify-content: center; /*Display, flex-wrap and justify content create the grid structure for the items, aligned in the center.*/
     gap: 20px; /*Gaps between each product container*/
+    padding-top: 0;
 }
 
 /* .navbar{
@@ -321,10 +374,9 @@ html, body {
 }
 
 .hero img.logo{
-    padding: 1%;
     float: inline-start;
-    height: 5em;
     color: var(--colour-1);
+    width: 500px;
 }
 
 video {
@@ -337,7 +389,11 @@ video {
 
 
 .banner .products {
-  padding-top: 115px;
+  padding-top: 50px;
+  z-index: 5;
+}
+.banner  .search {
+  position: relative;
   z-index: 5;
 }
 
@@ -371,7 +427,10 @@ video {
 /* NAVBAR */
 
 .page-header .navbar .navbar-brand img {
-  height: 60px;
+  padding-left: 2em;
+  padding-top: 0;
+  height: 7em;
+  object-fit: cover;
 }
 
 .index-list .page-header .navbar .navbar-nav .nav-link{
