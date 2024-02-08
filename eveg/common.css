@@ -457,12 +457,13 @@ video {
   color: var(--colour-4);
 }
 .page-header .navbar .avatar-header {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   overflow: hidden;
   border: 1px solid #eee;
   border-radius: 50%;
   display: inline-table;
+  overflow: hidden;
 }
 .page-header .navbar .avatar-header img {
   width: 100%;

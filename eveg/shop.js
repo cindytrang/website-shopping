@@ -302,9 +302,9 @@ function updateShoppingCartDropdown() {
               </div>
               <div class="media-body">
                   <h5><a>${product.name}</a></h5>
-                  <p><div class="shop-product-details shop-product-price" data-field="price" data-num="0">
-                      <span class="discount text-muted">Qty: ${quantity}</span>
-                      <span>£${(productTotal / 100).toFixed(2)}</span>
+                  <div class="shop-product-details shop-product-price" data-field="price" data-num="0">
+                  <span>£${(productTotal / 100).toFixed(2)}</span>
+                  <p><span class="discount text-muted">Qty: ${quantity}</span>
                   </div></p>
               </div>
           </div>
