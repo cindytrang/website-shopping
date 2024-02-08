@@ -120,8 +120,8 @@ function init() {
     }
     elements = document.getElementsByClassName("addToBasket");
     for(eIn = 0; eIn < elements.length; eIn++){
-      //elements[eIn].removeEventListener("click",increment);
-      //elements[eIn].addEventListener("click",increment);
+      elements[eIn].removeEventListener("click",checkBasket);
+      elements[eIn].addEventListener("click",checkBasket);
     }
   }
 
@@ -130,6 +130,23 @@ function init() {
   function inputchange(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
     changeQuantity(thisID,ev.target.parentElement.closest(".shop-product-buying").getElementsByTagName("input")[0].value);
+  }
+
+  function checkBasket(){
+    console.log(basket); 
+    console.log(Object.keys(basket).length);
+    if (Object.keys(basket).length == 0){
+      console.log("here");
+          fetch('errorPopUp.html')
+          .then(response => response.text())
+          .then(html => {
+            var container = document.getElementById('externalPopUpContainer'); 
+            container.innerHTML = html;
+            showError('Please add items before adding to basket');
+          })
+          .catch(error => console.error('Error fetching errorPopUp.html', error));
+
+    } 
   }
 
   /*
@@ -157,6 +174,15 @@ function init() {
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
     if(basket[thisID] === undefined){
       changeQuantity(thisID,0);
+      fetch('errorPopUp.html')
+          .then(response => response.text())
+          .then(html => {
+            var container = document.getElementById('externalPopUpContainer'); 
+            container.innerHTML = html;
+            showError('You cannot enter a negative number of items');
+          })
+          .catch(error => console.error('Error fetching errorPopUp.html', error));
+
     }else{
       if(basket[thisID] > 0){
         changeQuantity(thisID,parseInt(basket[thisID])-1);
@@ -295,3 +321,18 @@ function updateShoppingCartDropdown() {
 }
 
 window.addEventListener("load", init);
+
+function showError(message) {
+  //display the error pop up and the overlay 
+  document.getElementById('errorPopUp').style.display = 'block'; 
+  document.getElementById('overlay').style.display = 'block'; 
+
+  //set the error message for the pop up 
+  document.getElementById('errorMessage').innerText = message; 
+}
+
+function hideError(){
+  //hide the pop up and overlay 
+  document.getElementById('errorPopUp').style.display = 'none'; 
+  document.getElementById('overlay').style.display = 'none';
+}
