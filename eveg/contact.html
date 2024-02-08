@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="colours.css">
+
+  <script src="shop.js"></script>
+  <title>E-Veg Shop</title>
+
+</head>
+<body> 
+    
+    <div class="hero">
+      <img class="logo" src="images/e_veg_logo.png"></img>
+    <div class="navbar">
+      <div class="toggle-wrapper">
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+    </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="contact.html"><span>Contact</span></a></li>
+          <li><a id="search-link" href="#"><span>Search</span></a></li>
+          <li><a href="#"><span>About</span></a></li>
+          <li class="spacer">&nbsp;</li>
+          <li class="welcome"><a>Welcome Test User</a></li>
+          <li><a class="basket" href="checkout.html"><span>
+            Checkout</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="search-bar">
+      <div class="searchbuttons">
+        <a id="closesearchbutton" href="#">
+            <span>X</span>
+        </a>
+      </div>
+      <input type="text" id="searchbox"></input>
+      <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+
+
+  <div class = container>
+    <h1>Contact Us</h1>
+    <div class = "contact-container">
+      <div class="contact-info">
+          <p>For inquiries and support, please reach out to us through the following:</p>
+          <ul>
+          <li>Email: customerservice@e-vegshop.com</li>
+          <li>Phone: 1234 5678 910</li>
+          </ul>
+      </div>
+  </div>
+
+  <div class = "form-container">
+      <div class="message-form">
+          <h2>Send us a Message</h2>
+          <form id="messageForm">
+          <label for="userMessage">Your Message:</label>
+          <textarea id="userMessage" rows="4" placeholder="Type your message here..."></textarea>
+          <label for="userEmail">Your Email:</label>
+          <input type="email" id="userEmail" placeholder="YourEmail@example.com" required>
+          <button type="submit">Send Message</button>
+          </form>
+      </div>
+    </div>
+
+</div>
+
+    <div class="about">
+      <div>&copy; 2021 InterVeg Coventry Ltd.</div>
+      <div>Fresh produce from the Midland's green countryside.</div>
+    </div>
+</body>
+</html>
