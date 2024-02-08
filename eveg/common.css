@@ -666,6 +666,7 @@ form.customerDetails button{
 .faq-section {
     max-width: 600px;
     margin: auto;
+    padding-top: 90px;
 }
 
 .faq-question {
@@ -691,6 +692,13 @@ form.customerDetails button{
 
 .faq-question.active {
     background-color: #e0e0e0;
+}
+
+.searchFAQSection{
+    border: 2px solid var(--colour-4);
+    padding: 7%;
+    border-radius: 5px;
+    margin-top: 25px;
 }
 
 .plus-minus-sign {
@@ -759,4 +767,12 @@ form.customerDetails button{
 .owl-carousel:hover .owl-nav div.owl-prev {
   opacity: 1 !important;
   left: 0 !important;
+}
+
+#faq-searchbox{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 15px;
+
 }
