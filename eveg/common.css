@@ -49,9 +49,7 @@ input{
     font-size: 15px;
 }
 h2{
-    margin-left: 20px;
     color: var(--colour-1);
-    margin-top: 20px;
 }
 .shop-product-img img{
     height: 100%;
@@ -427,18 +425,18 @@ form.customerDetails button{
     width: 115px;
 }
 
-.h1{
+h1{
     color: var(--colour-1);
+    padding-bottom: 2%;
 }
 
 .contact-info {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
+
     text-align: left;
-    width: 50%;
-    padding-left: 25%;
+    width: fit-content;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 
   }
   
@@ -464,6 +462,10 @@ form.customerDetails button{
   .message-form {
     margin-top: 30px;
     text-align: left;
+    width: 400px;
+    border: 1px solid;
+    border-color: var(--colour-1);
+    padding: 10%;
   }
   
   .message-form h2 {
@@ -478,12 +480,15 @@ form.customerDetails button{
     flex-direction: column;
     max-width: 400px;
     margin: auto;
+    color: var(--colour-1);
+    border-color: var(--colour-4);
+    border: 1px;
+
   }
   
   #messageForm label {
     font-size: 16px;
     margin-top: 10px;
-    color: var(--colour-1);
   }
   
   #userMessage,
@@ -501,3 +506,15 @@ form.customerDetails button{
   .container{
     text-align: center;
   }
+
+  .form-container {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contact-container {
+    display: flex;
+    align-content: center;
+  }
+  
