@@ -27,8 +27,7 @@
 }
 
 .productBasketDiv{
-    width: 128px;
-    width: 170px;
+    width: 158px;
     display: flex;
     flex-direction: column-reverse;
 }
