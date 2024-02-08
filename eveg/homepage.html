@@ -42,30 +42,37 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarcollapse">
-             <!-- Navbar Menu -->
+        <!-- Navbar Menu -->
         <div class="collapse navbar-collapse" id="navbarcollapse">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
+              <a href="homepage.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" style="color: black;">
               <a href="index.html" class="nav-link">Shop</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
               <a href="register.html" class="nav-link">Register</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
               <a href="login.html" class="nav-link">Login</a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><span>Contact</span></a>
+            <li class="nav-item" style="color: black;">
+              <a href="contact.html" class="nav-link"><span>Contact</span></a>
             </li>
-            <li class="nav-item">
-              <a id="search-link" href="#" class="nav-link"><span>Search</span></a>
+            <li class="nav-item"style="color: black;">
+              <a href="about.html" class="nav-link"><span>About</span></a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><span>About</span></a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
+                <div class="avatar-header"><img src="images/img/logo/profile.png" alt="User Avatar"></div> John
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                <a class="dropdown-item" href="setting.html">Settings</a>
+              </div>
             </li>
-             <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary" id="totalItems">0</span>
                 </a>
@@ -95,6 +102,9 @@
       </div>
     </nav>
   </div>
+  </div>
+  </div>
+
   <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-video text-center bg-dark mb-0 rounded-0">
