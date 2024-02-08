@@ -19,6 +19,7 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
             <div class="shop-product-details shop-product-price" data-field="price" data-num="[EVEGPRODUCT#]"></div>
             <div class="shop-product-details shop-product-units" data-field="units" data-num="[EVEGPRODUCT#]"></div>
             <div class="shop-product-buying" data-num="[EVEGPRODUCT#]">
+              <div class="productBasketWrapper">
                 <div class="productBasketDiv"><button class="addToBasket">Add</button>
                     <div class="adjustDiv">
                         <button class="btn adjustDown">-</button>
@@ -26,6 +27,7 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
                         <button class="btn adjustUp">+</button>
                     </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>
