@@ -712,6 +712,8 @@ h1{
   }
   .container{
     text-align: center;
+    padding-top: 3%;
+    color: var(--colour-1);
   }
 
   .form-container {
@@ -724,8 +726,7 @@ h1{
     display: flex;
     align-content: center;
   }
-  
-=======
+
 #errorPopUp {
     display: none;
     position: fixed;
