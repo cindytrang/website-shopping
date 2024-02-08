@@ -8,69 +8,71 @@ let basket = {};
 //The adjustDown and adjustUp buttons have their behaviour specified below, but you can change this if you like
 //To change the quantity of a product, change the value of the input (with the class of buyInput), you can then recalculate the basket with refreshBasket()
 //Or you can adjust the basket object via javascript and call updateQuantityInputs() and refreshBasket()
+
 var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
-<div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
-<div class="card__content" data-num="[EVEGPRODUCT#]">
-<div class="shop-product-details shop-product-img" data-field="img" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-details shop-product-price" data-field="price" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-details shop-product-units" data-field="units" data-num="[EVEGPRODUCT#]"></div>
-<div class="shop-product-buying" data-num="[EVEGPRODUCT#]">
-<div class="productBasketDiv"><button class="addToBasket">Add</button>
-<div class="adjustDiv"><button class="btn adjustDown">-</button>
-<input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0" type="number">
-<button class="btn adjustUp">+</button></div></div></div></div></div>`;
+    <div class="card__content" data-num="[EVEGPRODUCT#]">
+        <div class="shop-product-details shop-product-left">
+            <div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-details shop-product-img" data-field="img" data-num="[EVEGPRODUCT#]"></div>
+        </div>
+        <div class="shop-product-details shop-product-right">
+            <div class="shop-product-details shop-product-price" data-field="price" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-details shop-product-units" data-field="units" data-num="[EVEGPRODUCT#]"></div>
+            <div class="shop-product-buying" data-num="[EVEGPRODUCT#]">
+                <div class="productBasketDiv"><button class="addToBasket">Add</button>
+                    <div class="adjustDiv">
+                        <button class="btn adjustDown">-</button>
+                        <input class="buyInput" data-num="[EVEGPRODUCT#]" min="0" value="0" type="number">
+                        <button class="btn adjustUp">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
 
-var errorMessage = `<button onclick="showError('This is a test error message')">Show Error message</button>
-<div id = "externalPopUpContainer"></div>
-<script>
-  fetch('errorPopUp.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('externalPopUpContainer').innerHTML = html; 
-    }); 
-</script>
-</div>`; 
 
-  function init(){
-    const toggleButton = document.getElementsByClassName('toggle-button')[0];
-    const hero = document.getElementsByClassName('hero')[0];
-    const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+function init() {
+    // const toggleButton = document.getElementsByClassName('toggle-button')[0];
+    // const hero = document.getElementsByClassName('hero')[0];
+    // // const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 
-    //When the toggle button is pressed (if visible by the screen size, the menu is shown)
-    toggleButton.addEventListener('click',()=>{
-      navbarLinks.classList.toggle('active');
-      hero.classList.toggle('menuactive');
-    });
+    // //When the toggle button is pressed (if visible by the screen size, the menu is shown)
+    // toggleButton.addEventListener('click',()=>{
+    //   navbarLinks.classList.toggle('active');
+    //   hero.classList.toggle('menuactive');
+    // });
 
-    const searchBar = document.getElementsByClassName('search-bar')[0];
-    //Show the search bar when the search link is pressed
-    document.getElementById('search-link').addEventListener('click',()=>{
-      searchBar.classList.toggle('active');
-      document.getElementById('searchbox').focus();
-    });
+    // const searchBar = document.getElementsByClassName('search-bar')[0];
+    // //Show the search bar when the search link is pressed
+    // document.getElementById('search-link').addEventListener('click',()=>{
+    //   searchBar.classList.toggle('active');
+    //   document.getElementById('searchbox').focus();
+    // });
 
-    //Close the search bar
-    document.getElementById('searchbutton').addEventListener('click', ()=>{
-      searchStr = document.getElementById('searchbox').value;
-      redraw();
-    });
+    // //Close the search bar
+    // document.getElementById('searchbutton').addEventListener('click', ()=>{
+    //   searchStr = document.getElementById('searchbox').value;
+    //   redraw();
+    // });
 
-    //Close the search bar
-    document.getElementById('closesearchbutton').addEventListener('click', ()=>{
-      searchStr = "";
-      searchBar.classList.remove('active');
-      redraw();
-    });
+    // //Close the search bar
+    // document.getElementById('closesearchbutton').addEventListener('click', ()=>{
+    //   searchStr = "";
+    //   searchBar.classList.remove('active');
+    //   redraw();
+    // });
 
+    if(getCookie("cookieMessageSeen") == "true"){
+      document.getElementById('cookieMessage').style.display = 'none';
+    }
+  
     //Close the cookies message
     document.getElementById('acceptCookies').addEventListener('click', ()=>{
       setCookie('cookieMessageSeen', true);
       document.getElementById('cookieMessage').style.display = 'none';
     });
 
-    if(getCookie("cookieMessageSeen") == "true"){
-      document.getElementById('cookieMessage').style.display = 'none';
-    }
     initProducts(redraw);
   }
 
