@@ -871,3 +871,59 @@ h1{
 
 }
 
+.login-container {
+  background-color: var(--colour-2);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-self: center;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--colour-1);
+  border: 1px solid var(--colour-1);
+}
+
+.login-form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"],
+button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover{
+  border-color: var(--colour-1);
+}
+
+.login-content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 7%;
+}
+
+.login-button{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.login-container a{
+  color: var(--colour-1);
+}
+
+.login-container a:hover{
+  color: var(--colour-5);
+  padding-top: 2%;
+}
