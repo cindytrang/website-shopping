@@ -115,20 +115,6 @@ function changeValue(ID){
         }
     total.innerHTML = "";
     total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
-    if(totalPrice == 0){
-      document.querySelector('.checkoutList').innerHTML = '';
-      var emptyBasket = document.createElement('h3');
-      emptyBasket.id = "empty-message";
-      emptyBasket.innerText = "Basket empty!";
-      var returnToShop = document.createElement("a");
-      returnToShop.href = "index.html";
-      returnToShop.innerHTML = "<u>Return to shop</u>";
-      returnToShop.id = "return-to-shop";
-      document.querySelector('.checkoutList').appendChild(emptyBasket);
-      document.querySelector('.checkoutList').appendChild(returnToShop);
-      document.querySelector(".submit-payment").style.display = "none";
-    }
-
 }
 
 function removeItem(ID){
