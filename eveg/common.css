@@ -916,7 +916,6 @@ h1{
   font-size: 0.8rem;
 }
 
-
 .owl-carousel .owl-nav {
   display: block !important;
   margin: 0;
@@ -1064,4 +1063,12 @@ input[type="password"]:hover{
     bottom: 25px;
     right: 25px;
     display: none;
+}
+
+#return-to-shop:hover{
+  color: var(--colour-4);
+}
+
+#pay-button:disabled:hover{
+  background-color: var(--colour-1);
 }
