@@ -347,6 +347,15 @@ html, body {
     /* background: black; */
     padding: 1em;
 }
+
+.overflow-auto {
+    overflow-y: auto; 
+}
+
+.max-height {
+    max-height: 200px; 
+}
+
 .toggle-button{
     display:none;
     flex-direction: column;
