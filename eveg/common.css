@@ -1054,3 +1054,9 @@ input[type="password"]:hover{
   color: var(--colour-1);
   margin-top: 3%;
 }
+#return-to-shop:hover{
+  color: var(--colour-4);
+}
+#pay-button:disabled:hover{
+  background-color: var(--colour-1);
+}
