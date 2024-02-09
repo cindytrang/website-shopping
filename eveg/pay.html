@@ -23,8 +23,6 @@
         <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
         <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
         <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        </head>
         <title>E-Veg Shop</title>
       </head>
     <body>
@@ -39,7 +37,7 @@
     
             <!-- Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="" role="button" ><i class="fa fa-bars" aria-hidden="true" style="color: rgba(0,0,0,.5);"></i></span>
+              <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Navbar Menu -->
             <div class="collapse navbar-collapse" id="navbarcollapse">
@@ -51,19 +49,19 @@
                   <a href="index.html" class="nav-link">Shop</a>
                 </li>
                 <li class="nav-item" style="color: black;">
-                  <a href="favourites.html" class="nav-link">Favourites</a>
-                </li>
-                <!-- <li class="nav-item" style="color: black;">
                   <a href="register.html" class="nav-link">Register</a>
                 </li>
                 <li class="nav-item" style="color: black;">
                   <a href="login.html" class="nav-link">Login</a>
-                </li> -->
+                </li>
                 <li class="nav-item" style="color: black;">
                   <a href="#" class="nav-link"><span>Contact</span></a>
                 </li>
                 <li class="nav-item"style="color: black;">
                   <a href="about.html" class="nav-link"><span>About</span></a>
+                </li>
+                <li class="nav-item"style="color: black;">
+                  <a class="nav-link" href="checkout.html"><span>Checkout</span></a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
@@ -72,8 +70,41 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="transaction.html">Transactions History</a>
                     <a class="dropdown-item" href="setting.html">Settings</a>
-                    <a class="dropdown-item" href="register.html">Register</a>
-                    <a class="dropdown-item" href="login.html">Login</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
+                  </a>
+                  <div class="dropdown-menu shopping-cart">
+                      <ul>
+                          <li>
+                              <div class="drop-title">Your Cart</div>
+                          </li>
+                          <li>
+                              <div class="shopping-cart-list">
+                                  <div class="media">
+                                      <img class="d-flex mr-3" src="images/img/fish.jpg" width="60">
+                                      <div class="media-body">
+                                          <h5><a href="javascript:void(0)">Carrot</a></h5>
+                                          <p class="price">
+                                              <span class="discount text-muted">Rp. 700.000</span>
+                                              <span>Rp. 100.000</span>
+                                          </p>
+                                          <p class="text-muted">Qty: 1</p>
+                                      </div>
+                                  </div>
+                          <li>
+                              <div class="drop-title d-flex justify-content-between">
+                                  <span>Total:</span>
+                                  <span class="text-primary"><strong>Rp. 2000.000</strong></span>
+                              </div>
+                          </li>
+                          <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
+                              <a href="cart.html" class="btn btn-secondary">View Cart</a>
+                              <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                          </li>
+                      </ul>
                   </div>
                 </li>
               </ul>
@@ -83,20 +114,18 @@
         </div>
     </div>
     </div>
-        <body>
-           <div class = "checkout-container">
-              <h2 id = "basket-title">Basket Contents</h2>
-              <table class="checkoutList">
-              </table>      
-              <div class = "submit-payment">
-                <div class = "basket-total"> Basket total: </div>     
-                <a href = "pay.html"><button class = "payment-button"> Proceed to Payment </button></a>
-              </div>
-              <div class="about">
-                <div>&copy; 2021 InterVeg Coventry Ltd.</div>
-                <div>Fresh produce from the Midland's green countryside.</div>
-              </div>
-              </div>
-            </div>
-    </body>
-</html>
+
+    <div class = "details">
+        <div id="customerDetails">
+            <h2 id = "details-title">Customer Details</h2>
+            <form class="customerDetails" action="creditcard.html">
+            <label for="customerName">Name:</label><input type="text" name="customerName" value="Test User" >
+            <label for="emailAddress">Email:</label><input type="text" name="emailAddress" value="testuser@example.org" >
+            <label for="contactNumber">Contact number:</label><input type="text" name="contactNumber" value="1234" >
+            <label for="delAddress">Delivery Address:</label><input type="text" name="delAddress" value="12 Example Avenue, Example Town, EX4 7AL" >
+            <button>Pay by Credit Card</button>
+            </form>
+        </div>
+    </div>
+  </body>
+  </html>
