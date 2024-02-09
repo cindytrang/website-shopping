@@ -575,8 +575,10 @@ video {
   color:var(--colour-3-h);
   font-weight: 400;
 }
+
 .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a {
 }
+
 .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a:focus, .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a:hover, .page-header .navbar .shopping-cart .shopping-cart-list .media h5 a.active {
   color: var(--colour-3-h);
 }
@@ -1046,11 +1048,20 @@ input[type="password"]:hover{
   margin-top: 3%;
   font-size: 15px;
 }
+
 .remove-item:hover{
   color: var(--colour-4);
 }
+
 #basket-title{
   padding-left: 20px;
   color: var(--colour-1);
   margin-top: 3%;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
 }
