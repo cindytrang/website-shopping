@@ -10,6 +10,9 @@ let basket = {};
 //Or you can adjust the basket object via javascript and call updateQuantityInputs() and refreshBasket()
 
 var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
+    <div class="like" data-field="likeProduct" data-num="[EVEGPRODUCT#]" id="likeContainer">
+    <button class="like-button">Test Text</button>'
+    </div>
     <div class="card__content" data-num="[EVEGPRODUCT#]">
         <div class="shop-product-details shop-product-left">
             <div class="shop-product-details shop-product-title card__title" data-field="title" data-num="[EVEGPRODUCT#]"></div>
@@ -90,10 +93,22 @@ function init() {
     const addToBasketButtons = document.querySelectorAll('.addToBasket');
     addToBasketButtons.forEach(button => {
         button.addEventListener('click', function(event) {
+          console.log("clicked basket");
             addToBasketClicked(event);
             toggleDropdownMenu();
         });
     });
+
+    // Add event listeners to like icon 
+    // const likeButton = document.querySelectorAll('.like');
+    // likeButton.forEach(button => {
+    //   button.addEventListener('click', function(event) {
+    //     console.log("clicked heart");
+    //     console.log("confused");
+    //     // toggleLike(event);
+    //     // console.log("prod " + productDetails[event.target.parentElement.getAttribute("data-num")].liked);
+    //   });
+    // });
   }
 
 
@@ -124,6 +139,50 @@ function init() {
     for(eIn = 0; eIn < elements.length; eIn++){
       elements[eIn].removeEventListener("click",checkBasket);
       elements[eIn].addEventListener("click",checkBasket);
+    }
+    elements = document.getElementsByClassName("like");
+    for(eIn = 0; eIn < elements.length; eIn++){
+      elements[eIn].removeEventListener("click",toggleLike);
+      elements[eIn].addEventListener("click",toggleLike);
+    }
+  }
+
+  function toggleLike(ev) {
+    var productNum = ev.target.parentElement.getAttribute("data-num");
+    var buttonLiked = productDetails[productNum].liked
+    console.log("Product num is: " + productNum);
+    console.log("button value was: " + buttonLiked);
+    var likeContainer = ev.target.parentElement;
+    
+    // liked
+    if (buttonLiked == 0) {
+      productDetails[productNum].liked = 1;
+      var fullHeartIcon = document.createElement('i');
+      fullHeartIcon.id = 'heartIconFull';
+      fullHeartIcon.className = 'fas fa-heart';
+      likeContainer.innerHTML = '';
+      likeContainer.appendChild(fullHeartIcon);
+      console.log("changed to heartIconFull");
+    } else {
+    //unliked
+      productDetails[productNum].liked = 0;
+      var emptyHeartIcon = document.createElement('i');
+      emptyHeartIcon.id = 'heartIconEmpty';
+      emptyHeartIcon.className = 'far fa-heart';
+      likeContainer.innerHTML = '';
+      likeContainer.appendChild(emptyHeartIcon);
+      console.log("changed to heartIconEmpty");
+    }
+    console.log("button value changed to: " + productDetails[productNum].liked)
+  }
+
+  function createLike(isLiked){
+    console.log("Checking the like button")
+    if (isLiked == 0){
+      return '<i id="heartIconEmpty" class="far fa-heart" ></i>';
+    }
+    else{
+      return '<i id="heartIconFull" class="fas fa-heart" ></i>';
     }
   }
 
@@ -242,6 +301,20 @@ function init() {
           break;
       }
 
+    });
+
+    document.querySelectorAll(".like").forEach(function(element){
+      console.log("REFRESHED PAGE");
+      var field = element.getAttribute("data-field");
+      var num = element.getAttribute("data-num");
+      console.log("item: " + productDetails[num].liked)
+      switch(field){
+        case "likeProduct":
+          console.log("in the like, like num is: " + productDetails[num].liked);
+          element.innerHTML = createLike(productDetails[num].liked);
+          break;
+
+      }
     });
     resetListeners();
     updateQuantityInputs();

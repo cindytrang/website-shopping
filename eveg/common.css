@@ -143,6 +143,30 @@ h2{
     }
 }
 
+.like{
+  float: inline-end;
+  align-items: end;
+  color: var(--colour-3);
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: right;
+}
+.like-button i {
+  color: #ff0000; /* Red color for heart */
+  font-size: 24px;
+}
+.liked {
+  color: #ff0000; /* Change heart color when liked */
+}
+
+#heartIconEmpty,
+#heartIconFull {
+  font-size: 30px; /* Adjust the size as needed */
+  float: right;
+}
+
 .square-image-container {
   width: 230px;
   height: 230px;
