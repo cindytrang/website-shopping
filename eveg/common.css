@@ -1015,4 +1015,5 @@ input[type="password"]:hover{
 #basket-title{
   padding-left: 20px;
   color: var(--colour-1);
+  margin-top: 3%;
 }
