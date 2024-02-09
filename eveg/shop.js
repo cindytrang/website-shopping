@@ -130,8 +130,8 @@ function init() {
 
   //When the input changes, add a 'bought' class if more than one is added
   function inputchange(ev){
-    var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    changeQuantity(thisID,ev.target.parentElement.closest(".shop-product-buying").getElementsByTagName("input")[0].value);
+      var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
+      changeQuantity(thisID,ev.target.parentElement.closest(".shop-product-buying").getElementsByTagName("input")[0].value);
   }
 
   function checkBasket(){
@@ -154,11 +154,23 @@ function init() {
   * Change the quantity of the product with productID
   */
   function changeQuantity(productID, newQuantity){
-    basket[productID] = newQuantity;
-    if(newQuantity == 0)
-      delete basket[productID];
-    document.querySelector(".buyInput[data-num='"+productID+"']").value = newQuantity;
-    refreshBasket();
+    if (newQuantity < 0 ){
+        fetch('errorPopUp.html')
+            .then(response => response.text())
+            .then(html => {
+              var container = document.getElementById('externalPopUpContainer'); 
+              container.innerHTML = html;
+              showError('You cannot enter a negative number of items');
+            })
+            .catch(error => console.error('Error fetching errorPopUp.html', error));
+    } else {
+      basket[productID] = newQuantity;
+      if(newQuantity == 0)
+        delete basket[productID];
+      document.querySelector(".buyInput[data-num='"+productID+"']").value = newQuantity;
+      refreshBasket();
+    }
+
   }
 
   //Add 1 to the quantity
@@ -166,7 +178,8 @@ function init() {
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
     if(basket[thisID] === undefined){
       basket[thisID] = 0;
-    }
+    } 
+    console.log(basket[thisID]);
     changeQuantity(thisID,parseInt(basket[thisID])+1);
   }
 

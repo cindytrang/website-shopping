@@ -793,6 +793,10 @@ h1{
     z-index: 1000;
 }
 
+#errorMessage{
+    color: var(--colour-3);
+}
+
 #overlay {
     display: none;
     position: fixed;
