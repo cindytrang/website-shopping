@@ -102,6 +102,16 @@ function changeValue(ID){
   //add in remove from basket buttons
   var inputValue = document.getElementById(ID).value;
   let basket = JSON.parse(getCookie("basket"));
+  if (inputValue < 0 ){
+    fetch('errorPopUp.html')
+          .then(response => response.text())
+          .then(html => {
+            var container = document.getElementById('externalPopUpContainer'); 
+            container.innerHTML = html;
+            showError('You cannot enter a negative number of items');
+          })
+          .catch(error => console.error('Error fetching errorPopUp.html', error));
+  } else {
     basket[ID] = inputValue;
     setCookie('basket', JSON.stringify(basket));
     //changeQuantity(ID, inputValue);
@@ -130,7 +140,6 @@ function removeItem(ID){
       }
   total.innerHTML = "";
   total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
-
   if(totalPrice == 0){
     document.querySelector('.checkoutList').innerHTML = '';
     var emptyBasket = document.createElement('h3');
@@ -144,5 +153,24 @@ function removeItem(ID){
     document.querySelector('.checkoutList').appendChild(returnToShop);
     document.querySelector(".submit-payment").style.display = "none";
   }
+
+}
+
+function showError(message) {
+  //display the error pop up and the overlay 
+  document.getElementById('errorPopUp').style.display = 'block'; 
+  document.getElementById('overlay').style.display = 'block'; 
+
+  //set the error message for the pop up 
+  document.getElementById('errorMessage').innerText = message; 
+  const errorPopUp = document.getElementById('errorPopUp');
+  const closeButton = errorPopUp.querySelector('closeErrorButton');
+  closeButton.focus();
+}
+
+function hideError(){
+  //hide the pop up and overlay 
+  document.getElementById('errorPopUp').style.display = 'none'; 
+  document.getElementById('overlay').style.display = 'none';
 
 }
