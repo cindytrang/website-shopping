@@ -125,6 +125,7 @@ function changeValue(ID){
         }
     total.innerHTML = "";
     total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
+  }
 }
 
 function removeItem(ID){
