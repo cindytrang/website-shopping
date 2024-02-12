@@ -91,38 +91,53 @@ h2{
 }
 
 .like{
-  float: inline-end;
-  align-items: end;
+  float: inline-start;
+  align-content: end;
   color: var(--colour-3);
   position: relative;
-  background-color: transparent;
   border: none;
-  cursor: pointer;
+  width: min-content;
 }
-.like-button i {
-  color: #ff0000; /* Red color for heart */
-  font-size: 24px;
-}
-.liked {
-  color: #ff0000; /* Change heart color when liked */
+.search {
+  height: 100px;
 }
 
-.search {
-  border: 1px solid red;
-  height: 100px;
+
+
+.searchBar{
+  display: inline-flex;
+  width:100%;
+  margin: 0 auto;
+  align-items: left;
+  border: 1px solid green;
+  
 }
 
 .search-container {
   padding-top: 5%;
-  max-width: 600px;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
   margin: 0 auto;
-  align-items: center;
+  align-items: left;
   padding-bottom: 0%;
+  display: flex;
+
   
 }
 
+.searchingContainer{
+  padding: 2%;
+
+}
+
+.filterContainer{
+  padding-left: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
 input[type="text"], select .search-container{
-  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -141,14 +156,11 @@ li:last-child .search-container{
   border-bottom: none;
 }
 
-.searchbuttons span{
-    color: white;
-    width: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top:0.25em;
-    padding: 0 1em;
-    height:fit-content;
+.searchButton{
+  height: 2.5em;
+  width: 4em;
+  padding: 0;
+  margin: 0;
 }
 .search-bar.active{
     display:flex;
@@ -164,7 +176,7 @@ li:last-child .search-container{
     box-shadow: 5px 5px #808080;
     border:0;
     border-bottom:1px solid #555;  
-    width: 100px;;
+    width: 30em;
     padding-left: 2em;
     padding-right: 2em;
     font-size: inherit;
@@ -174,19 +186,19 @@ li:last-child .search-container{
     width: 20em;
 }
 
+.loading{
+  width: 10em;
+  align-items: center;
+}
+
 
 .search-bar{
     display: none;
     padding-bottom: 18px;
-    padding-top: 4px;
     padding-left: 10px;
 }
 
-.searchbuttons a span{
-    color: var(--colour-1);
-    vertical-align: middle;
-    padding: 10px;
-}
+
 
 html{
     --hero-height: 10em;
@@ -254,6 +266,29 @@ html, body {
     font-weight: bold;
     text-align: center;
     color: var(--colour-1);
+}
+
+.input-group{
+  padding: 5em;
+  position: absolute;
+}
+
+
+.modal-content {
+  position: fixed;
+  z-index: 1;
+  margin: 15% auto;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  border: none;
+  display: none;
+
+}
+
+#noItems{
+  padding: 0;
 }
 
 .navbar-links ul{
@@ -334,6 +369,11 @@ html, body {
     margin-top: 1em;
     font-size: 2em;
     margin-left: 4rem;
+}
+.searchInput{
+  width: 30em;
+  height: 3em;
+  padding: 0;
 }
 
 .hero:before {
@@ -461,6 +501,7 @@ video {
   top: 5px;
   font-weight: 400;
   text-align: center;
+  z-index: 1;
 }
 
 .page-header .navbar.bg-white {

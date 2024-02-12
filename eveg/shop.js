@@ -1,6 +1,8 @@
 let productDetails = {};
+let productsFiltered = {};
 let searchStr = "";
 let basket = {};
+let filters = {};
 //Each product is based on a 'card'; a box that contains information about that product.
 //You can change the card template here. The [EVEGPRODUCT#] will always be subsituted for 
 //the element in the imagesArr (see fruit.js)
@@ -96,40 +98,99 @@ function init() {
       //elements[eIn].removeEventListener("click",increment);
       //elements[eIn].addEventListener("click",increment);
     }
+    // Checking when a product has been liked
     elements = document.getElementsByClassName("like");
     for(eIn = 0; eIn < elements.length; eIn++){
       elements[eIn].removeEventListener("click",toggleLike);
       elements[eIn].addEventListener("click",toggleLike);
     }
+    // Checking when the search button has been clicked
+    elements = document.getElementsByClassName("searchButton");
+    elements[0].removeEventListener("click",search);
+    elements[0].addEventListener("click",search);
+
+    // Checking when the user has entered text in the search bar
+    elements = document.getElementsByClassName("searchInput");
+    elements[0].removeEventListener("input", populateDropdown); 
+    elements[0].addEventListener("input", populateDropdown); 
+    // check if the user has clicked enter to search
+    elements[0].removeEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if (event.key == "Enter")
+      {console.log("Clicked enter")
+        search()}
+    });
+    elements[0].addEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if(event.key == "Enter")
+       { console.log("Clicked enter")
+        search()}
+    });
+    // Checking when the user has filtered their search
+    elements = document.getElementsByClassName("categorySelect");
+    elements[0].removeEventListener("change", filterItems);
+    elements[0].addEventListener("change", filterItems);
+  
+
+
   }
+
+  function search(){
+    
+    var loading = document.getElementById("loading");
+    var products = document.getElementById("page-content");
+
+    // Show the div
+    loading.removeAttribute("hidden");
+    products.setAttribute("hidden", true);
+
+    const searchDropdown = document.getElementById("searchDropdown");
+    searchDropdown.innerHTML = "";
+
+  // Display the loading screen for 3 seconds
+  setTimeout(function() {
+    console.log("Counting down...")
+    loading.setAttribute("hidden", true);
+    products.removeAttribute("hidden");
+  }, 700); // 
+
+  var newItems = filterItems()
+
+  productDetails = []
+    for(var i = 0; i < newItems.length; i++){
+      var newItem = newItems[i];
+      console.log("new item: "+ newItem)
+      productDetails[i] = {
+        productID: i,
+        name: newItem[0],
+        category: newItem[1],
+        price: newItem[5],
+        units: newItem[4],
+        packsize: newItem[3],
+        image: newItem[6],
+        liked: newItem[7]}
+
+    }
+    
+    redraw()
+
+  }
+
 
   function toggleLike(ev) {
     var productNum = ev.target.parentElement.getAttribute("data-num");
-    var buttonLiked = productDetails[productNum].liked
-    console.log("Product num is: " + productNum);
-    console.log("button value is: " + ev.target.getElementsByClassName("like-button"))
-   
+    var buttonLiked = productDetails[productNum].liked   
     if (buttonLiked == 0) {
       productDetails[productNum].liked = 1;
-      console.log("button value is: " + productDetails[productNum].liked)
     } else {
       productDetails[productNum].liked = 0;
-      console.log("button value is: " + productDetails[productNum].liked)
     }
-
-    var heartIconEmpty = document.createElement('i');
-    heartIconEmpty.id = 'heartIconEmpty';
-    heartIconEmpty.className = 'far fa-heart';
 
     // Get the like button
     var likeButton = ev.target.getElementsByClassName("like-button");
-
     // Append the <i> element to the like button
-    //likeButton.appendChild(heartIconEmpty);
-
-    
-
-    likeButton = createLike(productDetails[productNum].liked);
+    element = document.querySelectorAll(".like")[productNum]
+    element.innerHTML = createLike(productDetails[productNum].liked)
   }
 
   function createLike(isLiked){
@@ -183,6 +244,10 @@ function init() {
 
   function filterFunction(a){
     /*This demonstrates how to filter based on the search term*/
+    const resultsList = document.getElementById("resultsList");
+    if (searchStr == ""){
+
+    }
 
     return a.name.toLowerCase().includes(searchStr.toLowerCase());
 
@@ -206,11 +271,15 @@ function init() {
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
 
-    var shownProducts = productDetails.filter(filterFunction);
 
-    shownProducts.sort(sortFunction);
+    var shownProducts = productDetails;
+
+    console.log("shown products" + shownProducts)
+
 
     var numProducts = shownProducts.length;
+
+    console.log("Number of new products: " + numProducts)
     
     for(var i = 0; i < numProducts; i++){
       var cardHTML = cardTemplate.replaceAll("[EVEGPRODUCT#]",shownProducts[i].productID);
@@ -245,26 +314,12 @@ function init() {
       var num = element.getAttribute("data-num");
       switch(field){
         case "likeProduct":
-          console.log("in the like, like num is: " + productDetails[num].liked);
           element.innerHTML = createLike(productDetails[num].liked);
           break;
 
       }
       
     });
-
-
-    
-
-
-    
-
-
-  
-
-    
-      
-      
 
 
     resetListeners();
