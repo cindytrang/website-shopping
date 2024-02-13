@@ -191,7 +191,9 @@ h2{
   height: 100px;
 }
 
-
+[type=search] {
+  border: 1px solid var(--colour-4);
+}
 
 .searchBar{
   display: inline-flex;
@@ -203,27 +205,44 @@ h2{
 }
 
 .search-container {
-  padding-top: 5%;
+  padding-top: 4%;
   padding-left: 10%;
   padding-right: 10%;
   width: 100%;
   margin: 0 auto;
   align-items: left;
-  padding-bottom: 0%;
+  padding-bottom: 2%;
   display: flex;
 
   
 }
 
 .searchingContainer{
-  padding: 2%;
-
+  flex: 70%;
+  justify-content: center;
+  padding-top: 11px;
 }
 
-.filterContainer{
-  padding-left: 25%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+.filters label {
+  font-size: 18px;
+}
+
+.filters {
+  flex: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: flex-end; /* Align items to the right */
+}
+
+.categorySelect {
+  font-size: 16px; /* Set font size */
+  height: 33px; /* Set height to increase the size of the select menu */
+}
+
+.sortSelect {
+  font-size: 16px; /* Set font size */
+  height: 33px; /* Set height to increase the size of the select menu */
 }
 
 input[type="text"], select .search-container{
@@ -246,8 +265,8 @@ li:last-child .search-container{
 }
 
 .searchButton{
-  height: 2.5em;
-  width: 4em;
+  height: 3.8em;
+  width: 5em;
   padding: 0;
   margin: 0;
 }
@@ -273,6 +292,10 @@ li:last-child .search-container{
     background-color:rgba(255,255,255,0.9);
     color: black;
     width: 20em;
+}
+
+.searchButton .fas.fa-search {
+  font-size: 19px; /* Adjust the font size to make the icon bigger */
 }
 
 .loading{
@@ -469,9 +492,13 @@ html, body {
     margin-left: 4rem;
 }
 .searchInput{
-  width: 30em;
-  height: 3em;
-  padding: 0;
+  width: 50em;
+  height: 4em;
+  padding: 8px;
+}
+
+.searchInput::placeholder {
+  font-size: 23px; /* Adjust the font size of the placeholder text */
 }
 
 .hero:before {
