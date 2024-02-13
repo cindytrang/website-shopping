@@ -103,6 +103,7 @@ $(document).ready(function () {
 
 const searchInput = document.getElementById("searchInput");
 const categorySelect = document.getElementById("categorySelect");
+const sortSelect = document.getElementById("sortSelect");
 const searchDropdown = document.getElementById("searchDropdown");
 
 
@@ -113,7 +114,7 @@ function filterItems() {
   const searchText = searchInput.value.toLowerCase();
   const category = categorySelect.value.toLowerCase();
   const filteredItems = imagesArr.filter(item => { 
-    return item[0].toLowerCase().includes(searchText) && (category === "" || item[1] === category);
+    return item[0].toLowerCase().includes(searchText) && (category === "" || item[1] === category) && (item[7] === 1);
   });
 
   
@@ -121,6 +122,24 @@ function filterItems() {
   console.log("filtered items are: " + filteredItems[0][0])
   return filteredItems
 
+}
+
+function sortedItems() {
+  filteredList = filterItems();
+  const sortSelect = document.getElementById("sortSelect");
+  console.log("Sorted by is: " + sortSelect.value);
+  const sortCategory = sortSelect.value.toLowerCase();
+
+  if (sortCategory === "alphabetical") {
+    filteredList.sort((a, b) => a[0].localeCompare(b[0]));
+  } else if (sortCategory === "lowest price") {
+    filteredList.sort((a, b) => a[5] - b[5]);
+  } else if (sortCategory === "highest price") {
+    filteredList.sort((a, b) => b[5] - a[5]);
+  }
+
+  console.log("sorted items are: " + filteredList[0][0])
+  return filteredList;
 }
 
 // Function to display filtered items

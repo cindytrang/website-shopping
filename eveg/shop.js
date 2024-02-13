@@ -190,8 +190,23 @@ function init() {
     });
     // Checking when the user has filtered their search
     elements = document.getElementsByClassName("categorySelect");
-    elements[0].removeEventListener("change", filterItems);
-    elements[0].addEventListener("change", filterItems);
+    elements[0].removeEventListener("change", categorySearch);
+    elements[0].addEventListener("change", categorySearch);
+
+    // Checking when the user has selected sorted by 
+    elements = document.getElementsByClassName("sortSelect");
+    elements[0].removeEventListener("change", sortBy);
+    elements[0].addEventListener("change", sortBy);
+  }
+
+  function categorySearch(){
+    filterItems();
+    search()
+  }
+
+  function sortBy(){
+    sortedItems();
+    search()
   }
 
   function toggleLike(ev) {
@@ -255,11 +270,12 @@ function init() {
     products.removeAttribute("hidden");
   }, 700); // 
 
-  var newItems = filterItems()
+  // var newItems = filterItems()
+  var newSortedItems = sortedItems()
 
   productDetails = []
-    for(var i = 0; i < newItems.length; i++){
-      var newItem = newItems[i];
+    for(var i = 0; i < newSortedItems.length; i++){
+      var newItem = newSortedItems[i];
       console.log("new item: "+ newItem)
       productDetails[i] = {
         productID: i,
