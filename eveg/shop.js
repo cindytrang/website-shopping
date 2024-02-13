@@ -160,11 +160,38 @@ function init() {
       elements[eIn].removeEventListener("click",checkBasket);
       elements[eIn].addEventListener("click",checkBasket);
     }
+    // Checking when a product has been liked
     elements = document.getElementsByClassName("like");
     for(eIn = 0; eIn < elements.length; eIn++){
       elements[eIn].removeEventListener("click",toggleLike);
       elements[eIn].addEventListener("click",toggleLike);
     }
+    // Checking when the search button has been clicked
+    elements = document.getElementsByClassName("searchButton");
+    elements[0].removeEventListener("click",search);
+    elements[0].addEventListener("click",search);
+
+    // Checking when the user has entered text in the search bar
+    elements = document.getElementsByClassName("searchInput");
+    elements[0].removeEventListener("input", populateDropdown); 
+    elements[0].addEventListener("input", populateDropdown); 
+    // check if the user has clicked enter to search
+    elements[0].removeEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if (event.key == "Enter")
+      {console.log("Clicked enter")
+        search()}
+    });
+    elements[0].addEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if(event.key == "Enter")
+       { console.log("Clicked enter")
+        search()}
+    });
+    // Checking when the user has filtered their search
+    elements = document.getElementsByClassName("categorySelect");
+    elements[0].removeEventListener("change", filterItems);
+    elements[0].addEventListener("change", filterItems);
   }
 
   function toggleLike(ev) {
@@ -204,42 +231,10 @@ function init() {
     else{
       return '<i id="heartIconFull" class="fas fa-heart" ></i>';
     }
-    // Checking when a product has been liked
-    elements = document.getElementsByClassName("like");
-    for(eIn = 0; eIn < elements.length; eIn++){
-      elements[eIn].removeEventListener("click",toggleLike);
-      elements[eIn].addEventListener("click",toggleLike);
-    }
-    // Checking when the search button has been clicked
-    elements = document.getElementsByClassName("searchButton");
-    elements[0].removeEventListener("click",search);
-    elements[0].addEventListener("click",search);
-
-    // Checking when the user has entered text in the search bar
-    elements = document.getElementsByClassName("searchInput");
-    elements[0].removeEventListener("input", populateDropdown); 
-    elements[0].addEventListener("input", populateDropdown); 
-    // check if the user has clicked enter to search
-    elements[0].removeEventListener("keydown",function(event){
-      console.log("Event key is" + event.key)
-      if (event.key == "Enter")
-      {console.log("Clicked enter")
-        search()}
-    });
-    elements[0].addEventListener("keydown",function(event){
-      console.log("Event key is" + event.key)
-      if(event.key == "Enter")
-       { console.log("Clicked enter")
-        search()}
-    });
-    // Checking when the user has filtered their search
-    elements = document.getElementsByClassName("categorySelect");
-    elements[0].removeEventListener("change", filterItems);
-    elements[0].addEventListener("change", filterItems);
+    
   
-
-
   }
+
 
   function search(){
     
