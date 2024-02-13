@@ -7,9 +7,9 @@
     color: var(--colour-1) !important; /* Your custom color */
 }
 
-.navbar-toggler:not(:disabled):not(.disabled) {
-    cursor: pointer;
-    border: 2px solid rgba(0,0,0,.5);
+.navbar-toggler:not(:disabled) {
+  display: contents;
+  border: 2px solid rgba(0,0,0,.5);
 }
 
 .container .badge.badge-primary{
