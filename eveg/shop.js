@@ -190,8 +190,13 @@ function init() {
     });
     // Checking when the user has filtered their search
     elements = document.getElementsByClassName("categorySelect");
-    elements[0].removeEventListener("change", filterItems);
-    elements[0].addEventListener("change", filterItems);
+    elements[0].removeEventListener("change", categorySearch);
+    elements[0].addEventListener("change", categorySearch);
+  }
+
+  function categorySearch(){
+    filterItems();
+    search()
   }
 
   function toggleLike(ev) {
