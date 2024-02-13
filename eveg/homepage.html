@@ -5,14 +5,14 @@
   <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
   <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="colours.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/o2system-ui/o2system-ui.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/owl-carousel/owl-carousel.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
-  <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="colours.css">
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="jquery-migrate.js"></script>
   <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
@@ -24,146 +24,139 @@
   <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
   <script type="text/javascript" src="products.js"></script>
   <script type="text/javascript" src="shop.js"></script>
-  <title>E-Veg Shop</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>E-Veg Shop</title>
 </head>
 <body>
   <div class="page-header">
     <div class="container">
-    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-transparent" id="page-navigation">
         <!-- Navbar Brand -->
         <a href="index.html" class="navbar-brand">
-          <img class="logo" src="images/e_veg_logo.png"></img>
+          <img class="logo" src="images/e_veg_logo.png">
         </a>
 
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarcollapse">
-             <!-- Navbar Menu -->
+        <!-- Navbar Menu -->
         <div class="collapse navbar-collapse" id="navbarcollapse">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
+              <a href="homepage.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" style="color: black;">
               <a href="index.html" class="nav-link">Shop</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
+                <a href="favourites.html" class="nav-link">Favourites</a>
+            </li>
+            <!-- <li class="nav-item" style="color: black;">
               <a href="register.html" class="nav-link">Register</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="color: black;">
               <a href="login.html" class="nav-link">Login</a>
+            </li> -->
+            <li class="nav-item" style="color: black;">
+              <a href="contact.html" class="nav-link"><span>Contact</span></a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><span>Contact</span></a>
-            </li>
-            <li class="nav-item">
-              <a id="search-link" href="#" class="nav-link"><span>Search</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><span>About</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="checkout.html"><span>Checkout</span></a>
+            <li class="nav-item"style="color: black;">
+              <a href="about.html" class="nav-link"><span>About</span></a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar-header"><img src="images/e_veg_logo.png" alt="User Avatar"></div> John Doe
+              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
+                <div class="avatar-header"><img src="images/img/logo/profile.png" alt="User Avatar"></div> John
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="transaction.html">Transactions History</a>
                 <a class="dropdown-item" href="setting.html">Settings</a>
+                <a class="dropdown-item" href="register.html">Register</a>
+                <a class="dropdown-item" href="login.html">Login</a>
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
-              </a>
-              <div class="dropdown-menu shopping-cart">
-                  <ul>
-                      <li>
-                          <div class="drop-title">Your Cart</div>
-                      </li>
-                      <li>
-                          <div class="shopping-cart-list">
-                              <div class="media">
-                                  <img class="d-flex mr-3" src="images/img/fish.jpg" width="60">
-                                  <div class="media-body">
-                                      <h5><a href="javascript:void(0)">Carrot</a></h5>
-                                      <p class="price">
-                                          <span class="discount text-muted">Rp. 700.000</span>
-                                          <span>Rp. 100.000</span>
-                                      </p>
-                                      <p class="text-muted">Qty: 1</p>
-                                  </div>
-                              </div>
-                      <li>
-                          <div class="drop-title d-flex justify-content-between">
-                              <span>Total:</span>
-                              <span class="text-primary"><strong>Rp. 2000.000</strong></span>
-                          </div>
-                      </li>
-                      <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
-                          <a href="cart.html" class="btn btn-secondary">View Cart</a>
-                          <a href="checkout.html" class="btn btn-primary">Checkout</a>
-                      </li>
-                  </ul>
-              </div>
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary" id="totalItems">0</span>
+                </a>
+                <div class="dropdown-menu shopping-cart p-2">
+                    <ul>
+                        <li>
+                            <div class="drop-title">Your Cart</div>
+                        </li>
+                        <li id="cartItemsContainer">
+                            <!-- item list container filled with JS -->
+                        </li>
+                        <li>
+                            <div class="drop-title d-flex justify-content-between">
+                                <span>Total: </span>
+                                <span class="text-primary"><strong>£<span id="totalPrice"></span></strong></span>
+                            </div>
+                        </li>
+                        <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
+                            <span></span>
+                            <button class="btn btn-lg" onclick="window.location.href='checkout.html'">Checkout</button>
+                        </li>
+                    </ul>
+                </div>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
+  </div>
+  </div>
+
   <div id="page-content" class="page-content">
         <div class="banner">
-            <div class="jumbotron jumbotron-video text-center mb-0 rounded-0">
-                <video width="100%" preload="auto" loop autoplay muted>
+            <div class="jumbotron jumbotron-video text-center bg-dark mb-0 rounded-0">
+               <video class="banner-video" preload="auto" loop autoplay muted>
                     <source src='images/media/explore.mp4' type='video/mp4' />
                     <source src='images/media/explore.webm' type='video/webm' />
                 </video>
                 <div class="container">
                     <h1 class="pt-5">
-                        Save time and leave the<br>
-                        groceries to us.
+                        Always Fresh Groceries.
                     </h1>
                     <p class="lead">
-                        Always Fresh Everyday.
+                        Save time and effortlessly shop for fresh produce with our user-friendly online platform.
                     </p>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="card border-0 text-center">
                                 <div class="card-body">
-                                    <h4 class="card-title">
+                                    <h3 class="card-title">
                                         Buy
-                                    </h4>
+                                    </h3>
                                     <p class="card-text">
-                                        Simply click-to-buy on the product you want and submit your order when you're done.
-                                    </p>
+                                        Click-to-buy your desired product and submit your order when ready.                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="card border-0 text-center">
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        Harvest
+                                        Fresh
                                     </h4>
                                     <p class="card-text">
-                                        Our team ensures the produce quality is up to our standard and delivers to your door within 24 hours of harvest day.
+                                       The quality of our products is sourced directly from our home harvest.
                                     </p>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="card border-0 text-center">
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         Delivery
                                     </h4>
                                     <p class="card-text">
-                                        Farmers receive your orders two days in advance so they can prepare for harvest exactly as your orders – no wasted produce.
+                                        Fast same day delivery with no additional costs.
                                     </p>
                                 </div>
                             </div>
@@ -172,14 +165,14 @@
                 </div>
             </div>
         </div>
-                <section id="categories" class="pb-0">
-            <h2 class="title">Categories</h2>
+    <section id="categories" class="pb-0">
+            <h1 class="title">Categories</h1>
             <div class="landing-categories owl-carousel">
                 <div class="item">
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/vegetables.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn  btn-outline-light btn-lg">Vegetables</a>
+                            <a href="index.html" class="btn btn-outline-success btn-lg">Vegetables</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +180,7 @@
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/fruits.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn  btn-outline-light btn-lg">Fruits</a>
+                            <a href="index.html" class="btn btn-outline-success btn-lg">Fruits</a>
                         </div>
                     </div>
                 </div>
@@ -195,7 +188,7 @@
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/meats.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn  btn-outline-light btn-lg">Meats</a>
+                            <a href="index.html" class="btn btn-outline-success btn-lg">Meats</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +196,7 @@
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/fish.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn btn-outline-light btn-lg">Fishes</a>
+                            <a href="index.html" class="btn btn-outline-success btn-lg">Fishes</a>
                         </div>
                     </div>
                 </div>
@@ -211,7 +204,7 @@
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/frozen.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn  btn-outline-light btn-lg">Frozen Foods</a>
+                            <a href="index.html" class="btn btn-outline-success btn-lg">Frozen Foods</a>
                         </div>
                     </div>
                 </div>
@@ -219,7 +212,7 @@
                     <div class="card rounded-0 border-0 text-center">
                         <img src="images/img/package.jpg">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <a href="index.html" class="btn  btn-outline-light btn-lg">Package</a>
+                            <a href="index.html" class="btn  btn-outline-success btn-lg">Package</a>
                         </div>
                     </div>
                 </div>

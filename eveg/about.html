@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
+    <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="colours.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/o2system-ui/o2system-ui.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/owl-carousel/owl-carousel.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
+    <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jquery-migrate.js"></script>
+    <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+    <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="packages/o2system-ui/o2system-ui.js"></script>
+    <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+    <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
+    <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+    <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
+    <script type="text/javascript" src="products.js"></script>
+    
+    <title>FAQ Page</title>
+    <!-- <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        } */
+
+        
+    </style> -->
+</head>
+<body>
+<div class="index-list">
+    <div class="page-header">
+    <div class="container">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
+        <!-- Navbar Brand -->
+        <a href="index.html" class="navbar-brand">
+          <img class="logo" src="images/e_veg_logo.png"></img>
+        </a>
+
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="" role="button" ><i class="fa fa-bars" aria-hidden="true" style="color: rgba(0,0,0,.5);"></i></span>
+        </button>
+        <!-- Navbar Menu -->
+        <div class="collapse navbar-collapse" id="navbarcollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="color: black;">
+              <a href="homepage.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="index.html" class="nav-link">Shop</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+                <a href="favourites.html" class="nav-link">Favourites</a>
+            </li>
+            <!-- <li class="nav-item" style="color: black;">
+              <a href="register.html" class="nav-link">Register</a>
+            </li>
+            <li class="nav-item" style="color: black;">
+              <a href="login.html" class="nav-link">Login</a>
+            </li> -->
+            <li class="nav-item" style="color: black;">
+              <a href="contact.html"" class="nav-link"><span>Contact</span></a>
+            </li>
+            <li class="nav-item"style="color: black;">
+              <a href="about.html" class="nav-link"><span>About</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
+                <div class="avatar-header"><img src="images/img/logo/profile.png" alt="User Avatar"></div> John</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                <a class="dropdown-item" href="setting.html">Settings</a>
+                <a class="dropdown-item" href="register.html">Register</a>
+                <a class="dropdown-item" href="login.html">Login</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
+              </a>
+              <div class="dropdown-menu shopping-cart p-2">
+                    <ul>
+                        <li>
+                            <div class="drop-title">Your Cart</div>
+                        </li>
+                        <li id="cartItemsContainer">
+                            <!-- item list container filled with JS -->
+                        </li>
+                        <li>
+                            <div class="drop-title d-flex justify-content-between">
+                                <span>Total: </span>
+                                <span class="text-primary"><strong>£<span id="totalPrice"></span></strong></span>
+                            </div>
+                        </li>
+                        <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
+                            <span></span>
+                            <button class="btn btn-lg" onclick="window.location.href='checkout.html'">Checkout</button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+</div>
+</div>
+
+<div class="faq-section">
+    <div class="searchFAQSection">
+    <h1>Frequently Asked Questions</h1>
+        <input type="text" id="faq-searchbox" placeholder="Search FAQs..." oninput="filterFaqs()"></input>
+        
+
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">Who are we?</div>
+            <div class="faq-answer">We are E-Veg, a dedicated online platform providing you with the freshest and highest-quality vegetables. Our team is passionate about delivering farm-fresh produce directly to your doorstep.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">What payment methods do you accept?</div>
+            <div class="faq-answer">We accept credit/debit cards and secure online payment gateways.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">How can I track my order?</div>
+            <div class="faq-answer">Once your order is dispatched, you will receive a confirmation email with a tracking link.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">Where do our vegetables come from?</div>
+            <div class="faq-answer">At E-veg our vegetables are sourced from local farmers and trusted suppliers who share our commitment to quality and sustainability. We prioritize freshness, ensuring that you receive the best produce available.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">How can I place an order?</div>
+            <div class="faq-answer">Placing an order with us is easy! Simply browse our selection, add your desired vegetables to your cart, and proceed to checkout. Follow the steps to provide delivery details and complete your purchase.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">When will I receive my order?</div>
+            <div class="faq-answer">Delivery times vary based on your location and selected delivery slot. You can choose a convenient time during the checkout process, and we will make every effort to deliver your order within the specified time frame.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="plus-minus-sign">+</div>
+            <div class="faq-question">Do you offer returns or refunds?</div>
+            <div class="faq-answer">Yes, we have a hassle-free return policy. If you are not satisfied with your purchase, please contact us within 30 days, and we will arrange for a return and refund.</div>
+        </div>
+    </div>
+        
+
+
+    <!-- Add more FAQ items as needed -->
+
+</div>
+
+<script>
+    // Add JavaScript for toggle functionality
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     var faqQuestions = document.querySelectorAll('.faq-question');
+
+    //     faqQuestions.forEach(function (question) {
+    //         question.addEventListener('click', function () {
+    //             var answer = this.nextElementSibling;
+    //             answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    //             this.classList.toggle('active');
+    //         });
+    //     });
+    // });
+    function toggleFaq(faqItem) {
+        var answer = faqItem.querySelector('.faq-answer');
+        var plusMinusSign = faqItem.querySelector('.plus-minus-sign');
+
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            plusMinusSign.textContent = '+';
+        } else {
+            answer.style.display = 'block';
+            plusMinusSign.textContent = '-';
+        }
+
+        faqItem.classList.toggle('active');
+    }
+
+    function filterFaqs() {
+        var searchInput = document.getElementById('faq-searchbox');
+        var filter = searchInput.value.toUpperCase();
+        var faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(function (faqItem) {
+            var question = faqItem.querySelector('.faq-question');
+            var textContent = question.textContent || question.innerText;
+
+            if (textContent.toUpperCase().indexOf(filter) > -1) {
+                faqItem.style.display = '';
+            } else {
+                faqItem.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

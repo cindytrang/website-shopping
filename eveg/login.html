@@ -13,9 +13,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
   <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
-  <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script type="text/javascript" src="jquery.js"></script>
-  
   <script type="text/javascript" src="jquery-migrate.js"></script>
   <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
   <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
@@ -24,7 +22,6 @@
   <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
   <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
   <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
-  
   <script type="text/javascript" src="products.js"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +50,7 @@
     <div class="index-list">
     <div class="page-header">
     <div class="container">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent" id="page-navigation">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
         <!-- Navbar Brand -->
         <a href="index.html" class="navbar-brand">
           <img class="logo" src="images/e_veg_logo.png">
@@ -61,9 +58,8 @@
 
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="" role="button" ><i class="fa fa-bars" aria-hidden="true" style="color: rgba(0,0,0,.5);"></i></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
-
         <!-- Navbar Menu -->
         <div class="collapse navbar-collapse" id="navbarcollapse">
           <ul class="navbar-nav ml-auto">
@@ -89,7 +85,7 @@
               <a href="about.html" class="nav-link"><span>About</span></a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
+              <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar-header"><img src="images/img/logo/profile.png" alt="User Avatar"></div> John
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,10 +95,7 @@
                 <a class="dropdown-item" href="login.html">Login</a>
               </div>
             </li>
-          </ul>
-        </div>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary" id="totalItems">0</span>
                 </a>
@@ -111,7 +104,7 @@
                         <li>
                             <div class="drop-title">Your Cart</div>
                         </li>
-                        <li id="cartItemsContainer" class="overflow-auto max-height">
+                        <li id="cartItemsContainer">
                             <!-- item list container filled with JS -->
                         </li>
                         <li>
@@ -127,100 +120,32 @@
                     </ul>
                 </div>
             </li>
-        </ul>
-
+          </ul>
+        </div>
       </div>
     </nav>
   </div>
   </div>
   </div>
 
-
-  <!-- <div class="hero">
-    <div class="navbar">
-    <div class="toggle-wrapper">
-    <a href="#" class="toggle-button">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </a>
-    </div>
-      <a id="search-link" href="#"><span>Search</span></a>
-    </div>
-    <div class="search-bar">
-      <div class="searchbuttons">
-        <a id="closesearchbutton" href="#">
-            <span>X</span>
-        </a>
-      </div>
-      <input type="text" id="searchbox"></input>
-      <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
-    </div>
-  </div> -->
-
-
-  <div class="modal-content" hidden id="loading">
-    <img class="loading" src="images/img/carrot.gif" alt="Loading...">
-    <p>Loading...</p>
-  </div>
-  
-
-  </div>
-
-  <div id="page-content" class="page-content custom-section" >
-    <div class="banner">
-      <div class="search">
-      </div>
-</div>
-
-        <div class="search-container">
-          <div class="searchingContainer">
-          <input type="search" id="searchInput" class="searchInput" placeholder="Search for fruits and vegetables..."/>
-          <button id="searchButton" type="button" class="searchButton">
-            <i class="fas fa-search"></i>
-          </button>
-          <div id="searchDropdown" class="searchDropdown"></div>
+  <div class = login-content>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" action = "index.html">
+            <form id="loginForm" >
+        <div class="login-form-group">
+            <label class = "form-label" for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
         </div>
-        <div class="filterContainer">
-          <label for="categorySelect">Filter by Category:</label>
-          <select id="categorySelect" class="categorySelect">
-            <option value="">All Categories</option>
-            <option value="fruit">Fruit</option>
-            <option value="veg">Vegetable</option>
-            <option value="snack">Snack</option>
-            <option value="sauce">Sauces</option>
-          </select>
+        <div class = "form-label" class="login-form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
-        </div>
+        <button class = "login-button" type="submit">Login</button>
+        </form>
+        <a href = "register.html"> <u>New user? Register an account here</u></a>
+    </div>
+    </div>
 
-    
-     
-      <div class="products">
-        <script src="products.js"></script>
-        
-        <div  class="productList"></div>
-        
-      </div>
-        <div id = "externalPopUpContainer" aria-label ="error pop up"></div>
-      <div class="about">
-        <div>&copy; 2021 InterVeg Coventry Ltd.</div>
-        <div>Fresh produce from the Midland's green countryside.</div>
-      </div>
-      <a id="back-to-top" href="#" class="btn btn-danger btn-floating btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
-      <div id="cookieMessage"> 
-        <h3> This site uses cookies </h3>
-        By using this site, you are consenting to our use of cookies
-        We use cookies purely for the functionality of the website - to store the products that are in your basket.
-        <br>
-        For further details of how we use your data, please see our <a href="cookiePolicy.html">cookie policy</a>
-        <p></p>
-        <br>
-      <button id = "acceptButton"><a id="acceptCookies">Accept All</a></button>
-        <button id = "rejectButton"><a id="rejectCookies">Reject All</a></button>
-        <button id = "customiseButton"><a id="customiseCookies">Customise </a></button>
-      </div>
-      </div>
-      </div>
-  </div>
-</body>
+  </body>
 </html>
