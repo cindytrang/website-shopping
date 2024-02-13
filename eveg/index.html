@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
   <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script type="text/javascript" src="jquery.js"></script>
+  
   <script type="text/javascript" src="jquery-migrate.js"></script>
   <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
   <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
@@ -23,6 +24,7 @@
   <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
   <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
   <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
+  
   <script type="text/javascript" src="products.js"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,6 +135,7 @@
   </div>
   </div>
 
+
   <!-- <div class="hero">
     <div class="navbar">
     <div class="toggle-wrapper">
@@ -154,11 +157,49 @@
       <button id = "searchbutton" type = "submit"><i class="fa fa-search"></i></button>
     </div>
   </div> -->
-  <div id="page-content" class="page-content custom-section">
+
+
+  <div class="modal-content" hidden id="loading">
+    <img class="loading" src="images/img/carrot.gif" alt="Loading...">
+    <p>Loading...</p>
+  </div>
+  
+
+  </div>
+
+  <div id="page-content" class="page-content custom-section" >
     <div class="banner">
+      <div class="search">
+      </div>
+</div>
+
+        <div class="search-container">
+          <div class="searchingContainer">
+          <input type="search" id="searchInput" class="searchInput" placeholder="Search for fruits and vegetables..."/>
+          <button id="searchButton" type="button" class="searchButton">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="searchDropdown" class="searchDropdown"></div>
+        </div>
+        <div class="filterContainer">
+          <label for="categorySelect">Filter by Category:</label>
+          <select id="categorySelect" class="categorySelect">
+            <option value="">All Categories</option>
+            <option value="fruit">Fruit</option>
+            <option value="veg">Vegetable</option>
+            <option value="snack">Snack</option>
+            <option value="sauce">Sauces</option>
+          </select>
+        </div>
+        </div>
+
+    
+     
       <div class="products">
-      <div onclick=transformProduct() class="productList">
         <script src="products.js"></script>
+        
+        <div  class="productList"></div>
+        
       </div>
         <div id = "externalPopUpContainer" aria-label ="error pop up"></div>
       <div class="about">

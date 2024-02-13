@@ -1,6 +1,10 @@
-let productDetails = []; 
+
+let productDetails = {};
+let productsFiltered = {};
+
 let searchStr = "";
 let basket = {};
+let filters = {};
 //Each product is based on a 'card'; a box that contains information about that product.
 //You can change the card template here. The [EVEGPRODUCT#] will always be subsituted for 
 //the element in the imagesArr (see fruit.js)
@@ -10,6 +14,7 @@ let basket = {};
 //Or you can adjust the basket object via javascript and call updateQuantityInputs() and refreshBasket()
 
 var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
+
     <div class="like" data-field="likeProduct" data-num="[EVEGPRODUCT#]" id="likeContainer">
     <button class="like-button">Test Text</button>'
     </div>
@@ -35,7 +40,6 @@ var cardTemplate = `<div class="shop-product card" data-num="[EVEGPRODUCT#]">
         </div>
     </div>
 </div>`;
-
 
 function init() {
     // const toggleButton = document.getElementsByClassName('toggle-button')[0];
@@ -200,6 +204,109 @@ function init() {
     else{
       return '<i id="heartIconFull" class="fas fa-heart" ></i>';
     }
+    // Checking when a product has been liked
+    elements = document.getElementsByClassName("like");
+    for(eIn = 0; eIn < elements.length; eIn++){
+      elements[eIn].removeEventListener("click",toggleLike);
+      elements[eIn].addEventListener("click",toggleLike);
+    }
+    // Checking when the search button has been clicked
+    elements = document.getElementsByClassName("searchButton");
+    elements[0].removeEventListener("click",search);
+    elements[0].addEventListener("click",search);
+
+    // Checking when the user has entered text in the search bar
+    elements = document.getElementsByClassName("searchInput");
+    elements[0].removeEventListener("input", populateDropdown); 
+    elements[0].addEventListener("input", populateDropdown); 
+    // check if the user has clicked enter to search
+    elements[0].removeEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if (event.key == "Enter")
+      {console.log("Clicked enter")
+        search()}
+    });
+    elements[0].addEventListener("keydown",function(event){
+      console.log("Event key is" + event.key)
+      if(event.key == "Enter")
+       { console.log("Clicked enter")
+        search()}
+    });
+    // Checking when the user has filtered their search
+    elements = document.getElementsByClassName("categorySelect");
+    elements[0].removeEventListener("change", filterItems);
+    elements[0].addEventListener("change", filterItems);
+  
+
+
+  }
+
+  function search(){
+    
+    var loading = document.getElementById("loading");
+    var products = document.getElementById("page-content");
+
+    // Show the div
+    loading.removeAttribute("hidden");
+    products.setAttribute("hidden", true);
+
+    const searchDropdown = document.getElementById("searchDropdown");
+    searchDropdown.innerHTML = "";
+
+  // Display the loading screen for 3 seconds
+  setTimeout(function() {
+    console.log("Counting down...")
+    loading.setAttribute("hidden", true);
+    products.removeAttribute("hidden");
+  }, 700); // 
+
+  var newItems = filterItems()
+
+  productDetails = []
+    for(var i = 0; i < newItems.length; i++){
+      var newItem = newItems[i];
+      console.log("new item: "+ newItem)
+      productDetails[i] = {
+        productID: i,
+        name: newItem[0],
+        category: newItem[1],
+        price: newItem[5],
+        units: newItem[4],
+        packsize: newItem[3],
+        image: newItem[6],
+        liked: newItem[7]}
+
+    }
+    
+    redraw()
+
+  }
+
+
+  function toggleLike(ev) {
+    var productNum = ev.target.parentElement.getAttribute("data-num");
+    var buttonLiked = productDetails[productNum].liked   
+    if (buttonLiked == 0) {
+      productDetails[productNum].liked = 1;
+    } else {
+      productDetails[productNum].liked = 0;
+    }
+
+    // Get the like button
+    var likeButton = ev.target.getElementsByClassName("like-button");
+    // Append the <i> element to the like button
+    element = document.querySelectorAll(".like")[productNum]
+    element.innerHTML = createLike(productDetails[productNum].liked)
+  }
+
+  function createLike(isLiked){
+    console.log("Checking the like button")
+    if (isLiked == 0){
+      return '<i id="heartIconEmpty" class="far fa-heart" ></i>';
+    }
+    else{
+      return '<i id="heartIconFull" class="fas fa-heart" ></i>';
+    }
   }
 
 
@@ -281,6 +388,11 @@ function init() {
 
   function filterFunction(a){
     /*This demonstrates how to filter based on the search term*/
+    const resultsList = document.getElementById("resultsList");
+    if (searchStr == ""){
+
+    }
+
     return a.name.toLowerCase().includes(searchStr.toLowerCase());
 
     //If you wanted to just filter based on fruit/veg you could do something like this:
@@ -289,21 +401,29 @@ function init() {
     // return true;
   }
 
+  
+
   function sortFunction(a,b){
     return a.price > b.price;
   }
 
   //Redraw all products based on the card template
   function redraw(){
-    
+
+    console.log("Redrawing...")
+
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
 
-    var shownProducts = productDetails.filter(filterFunction);
 
-    shownProducts.sort(sortFunction);
+    var shownProducts = productDetails;
+
+    console.log("shown products" + shownProducts)
+
 
     var numProducts = shownProducts.length;
+
+    console.log("Number of new products: " + numProducts)
     
     for(var i = 0; i < numProducts; i++){
       var cardHTML = cardTemplate.replaceAll("[EVEGPRODUCT#]",shownProducts[i].productID);
@@ -328,10 +448,24 @@ function init() {
         case "units":
           element.innerHTML = "<span>"+productDetails[num].packsize + " " + productDetails[num].units+"</span>";
           break;
-      }
 
+      }
+      
     });
 
+    document.querySelectorAll(".like").forEach(function(element){
+      var field = element.getAttribute("data-field");
+      var num = element.getAttribute("data-num");
+      switch(field){
+        case "likeProduct":
+          element.innerHTML = createLike(productDetails[num].liked);
+          break;
+
+      }
+      
+    });
+
+  // Attach event listener to like button
     document.querySelectorAll(".like").forEach(function(element){
       console.log("REFRESHED PAGE");
       var field = element.getAttribute("data-field");
@@ -346,6 +480,7 @@ function init() {
       }
     });
     resetListeners();
+
     updateQuantityInputs();
   }
   
@@ -378,7 +513,7 @@ function init() {
     }
     return total;
   }
-
+  
 function addToBasketClicked(event) {
     let productId = event.target.parentElement.getAttribute('data-num');
     updateShoppingCartDropdown(); // Update the shopping cart dropdown
@@ -442,3 +577,4 @@ function hideError(){
   document.getElementById('errorPopUp').style.display = 'none'; 
   document.getElementById('overlay').style.display = 'none';
 }
+

@@ -178,13 +178,77 @@ h2{
   align-items: center;
 }
 
-.searchbuttons span{
-    color: white;
-    width: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top:0.25em;
-    padding: 0 1em;
+.like{
+  float: inline-start;
+  align-content: end;
+  color: var(--colour-3);
+  position: relative;
+  border: none;
+  width: min-content;
+}
+.search {
+  height: 100px;
+}
+
+
+
+.searchBar{
+  display: inline-flex;
+  width:100%;
+  margin: 0 auto;
+  align-items: left;
+  border: 1px solid green;
+  
+}
+
+.search-container {
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
+  margin: 0 auto;
+  align-items: left;
+  padding-bottom: 0%;
+  display: flex;
+
+  
+}
+
+.searchingContainer{
+  padding: 2%;
+
+}
+
+.filterContainer{
+  padding-left: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+input[type="text"], select .search-container{
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+ul .search-container{
+  list-style-type: none;
+  padding: 0;
+}
+
+li .search-container{
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child .search-container{
+  border-bottom: none;
+}
+
+.searchButton{
+  height: 2.5em;
+  width: 4em;
+  padding: 0;
+  margin: 0;
 }
 .search-bar.active{
     display:flex;
@@ -200,7 +264,7 @@ h2{
     box-shadow: 5px 5px #808080;
     border:0;
     border-bottom:1px solid #555;  
-    width:0;
+    width: 30em;
     padding-left: 2em;
     padding-right: 2em;
     font-size: inherit;
@@ -210,19 +274,19 @@ h2{
     width: 20em;
 }
 
+.loading{
+  width: 10em;
+  align-items: center;
+}
+
 
 .search-bar{
     display: none;
     padding-bottom: 18px;
-    padding-top: 4px;
     padding-left: 10px;
 }
 
-.searchbuttons a span{
-    color: var(--colour-1);
-    vertical-align: middle;
-    padding: 10px;
-}
+
 
 html{
     --hero-height: 10em;
@@ -264,6 +328,7 @@ html, body {
     flex-wrap: wrap;
     justify-content: center; /*Display, flex-wrap and justify content create the grid structure for the items, aligned in the center.*/
     gap: 20px; /*Gaps between each product container*/
+    padding-top: 0;
 }
 
 /* .navbar{
@@ -289,6 +354,29 @@ html, body {
     font-weight: bold;
     text-align: center;
     color: var(--colour-1);
+}
+
+.input-group{
+  padding: 5em;
+  position: absolute;
+}
+
+
+.modal-content {
+  position: fixed;
+  z-index: 1;
+  margin: 15% auto;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  border: none;
+  display: none;
+
+}
+
+#noItems{
+  padding: 0;
 }
 
 .navbar-links ul{
@@ -379,6 +467,11 @@ html, body {
     font-size: 2em;
     margin-left: 4rem;
 }
+.searchInput{
+  width: 30em;
+  height: 3em;
+  padding: 0;
+}
 
 .hero:before {
     content: "";
@@ -418,10 +511,9 @@ html, body {
 }
 
 .hero img.logo{
-    padding: 1%;
     float: inline-start;
-    height: 5em;
     color: var(--colour-1);
+    width: 500px;
 }
 
 video {
@@ -446,7 +538,11 @@ video {
 
 
 .banner .products {
-  padding-top: 115px;
+  padding-top: 50px;
+  z-index: 5;
+}
+.banner  .search {
+  position: relative;
   z-index: 5;
 }
 
@@ -480,7 +576,10 @@ video {
 /* NAVBAR */
 
 .page-header .navbar .navbar-brand img {
-  height: 60px;
+  padding-left: 2em;
+  padding-top: 0;
+  height: 7em;
+  object-fit: cover;
 }
 
 .index-list .page-header .navbar .navbar-nav .nav-link{
@@ -513,6 +612,7 @@ video {
   top: 5px;
   font-weight: 400;
   text-align: center;
+  z-index: 1;
 }
 
 .page-header .navbar.bg-white {
