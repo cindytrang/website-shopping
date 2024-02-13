@@ -71,7 +71,7 @@ $(document).ready(function () {
             $('#page-navigation').addClass('bg-white').removeClass('bg-transparent');
         }
   });
-  
+
   $('.landing-categories').owlCarousel({
     loop: true,
     items: 4,

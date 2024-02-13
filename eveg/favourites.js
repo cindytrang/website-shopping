@@ -64,6 +64,13 @@ $(document).ready(function () {
           $('#page-navigation').addClass('navbar-dark').removeClass('navbar-light');
       }
   });
+
+  $('.navbar-toggler').on('click', function() {
+        var isCollapsed = $(this).attr('aria-expanded') === 'false';
+        if (isCollapsed) {
+            $('#page-navigation').addClass('bg-white').removeClass('bg-transparent');
+        }
+  });
   
   $('.landing-categories').owlCarousel({
     loop: true,
