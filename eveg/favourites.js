@@ -93,3 +93,84 @@ $(document).ready(function () {
   });
 
 });
+
+const searchInput = document.getElementById("searchInput");
+const categorySelect = document.getElementById("categorySelect");
+const searchDropdown = document.getElementById("searchDropdown");
+
+
+function filterItems() {
+  const searchInput = document.getElementById("searchInput");
+  const categorySelect = document.getElementById("categorySelect");
+  console.log("Category is: " + categorySelect)
+  const searchText = searchInput.value.toLowerCase();
+  const category = categorySelect.value.toLowerCase();
+  const filteredItems = imagesArr.filter(item => { 
+    return item[0].toLowerCase().includes(searchText) && (category === "" || item[1] === category);
+  });
+
+  
+  //displayItems(filteredItems);
+  console.log("filtered items are: " + filteredItems[0][0])
+  return filteredItems
+
+}
+
+// Function to display filtered items
+
+
+// Function to populate the search dropdown
+function populateDropdown(event) {
+  const searchInput = document.getElementById("searchInput");
+  const searchDropdown = document.getElementById("searchDropdown");
+  const searchText = searchInput.value.toLowerCase();
+  console.log("Search is: " + searchText)
+
+  var filteredItems = imagesArr.filter(item => {
+    return item[0].toLowerCase().includes(searchText);
+  });
+
+  if (searchText.length == 0){filteredItems = ""}
+
+  searchDropdown.innerHTML = "";
+  filteredItems.forEach(item => {
+    const option = document.createElement("div");
+    option.textContent = item[0];
+    option.classList.add("dropdown-item");
+    option.addEventListener("click", () => {
+      searchInput.value = item[0];
+      searchDropdown.classList.remove("visible");
+      filterItems();
+    });
+    searchDropdown.appendChild(option);
+  });
+  
+  if (filteredItems.length > 0) {
+    searchDropdown.classList.add("visible");
+  } 
+  else if (searchText.length == 0){
+    searchDropdown.classList.remove("visible")
+  }
+  else {
+    searchDropdown.classList.remove("visible");
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  
+  
+  // Sample list of fruits and vegetables
+
+  
+  // Function to filter items based on search input and category
+  
+  
+  // Event listeners for input and select elements
+  searchInput.addEventListener("input", populateDropdown);
+  categorySelect.addEventListener("change", filterItems);
+  
+  // Initial call to filter items
+  filterItems();
+});
+
