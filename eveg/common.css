@@ -42,6 +42,7 @@ body.pace-done #page-content {
   all: unset;
 }
 
+
 button{
     background-color: var(--colour-1); 
     color: var(--colour-2);
@@ -955,6 +956,7 @@ h1{
     max-width: 600px;
     margin: auto;
     padding-top: 90px;
+    margin-top: 3%;
 }
 
 .faq-question {
