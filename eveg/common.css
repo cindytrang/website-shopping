@@ -742,7 +742,7 @@ a:visited{
     color: var(--colour-5);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .navbar-nav .dropdown-menu.shopping-cart {
         position: fixed; /* Or 'absolute' depending on your layout */
         top: 100px; /* Distance from the top of the viewport */
