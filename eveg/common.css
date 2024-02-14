@@ -213,7 +213,7 @@ h2 {
 .filterContainer,
 .sortContainer {
     position: relative;
-    z-index: 300000;
+    z-index: 900;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -799,16 +799,20 @@ a:visited {
 
 @media (max-width: 991px) {
     .navbar-nav .dropdown-menu.shopping-cart {
-        position: fixed; /* Or 'absolute' depending on your layout */
-        top: 100px; /* Distance from the top of the viewport */
-        right: 10px; /* Distance from the right of the viewport */
-        width: 300px; /* Set a specific width */
-        height: auto; /* Adjust height as needed */
-        z-index: 2050; /* Ensure it's above other content */
-        overflow-y: auto; /* Enable scroll if content overflows */
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        width: 300px;
+        height: auto;
+        z-index: 2050;
+        overflow-y: auto;
     }
     .dropdown-menu.shopping-cart {
         top: 90px; /* Adjust the top position to avoid overlapping */
+    }
+
+    .search-container {
+        padding-top: 8%;
     }
 }
 
