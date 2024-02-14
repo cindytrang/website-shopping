@@ -124,6 +124,27 @@ function filterItems() {
 
 }
 
+ function updateSortIcon() {
+                var sortIcon = document.getElementById('sortIcon').querySelector('i');
+                var sortSelect = document.getElementById('sortSelect');
+                var currentSort = sortSelect.value;
+
+                // Update sorting icon based on selected option
+                switch (currentSort) {
+                    case 'alphabetical':
+                        sortIcon.className = 'fas fa-sort-alpha-down';
+                        break;
+                    case 'lowest price':
+                        sortIcon.className = 'fas fa-sort-amount-up'; 
+                        break;
+                    case 'highest price':
+                        sortIcon.className = 'fas fa-sort-amount-down'; 
+                        break;
+                    default:
+                        break;
+                }
+            }
+
 function sortedItems() {
   filteredList = filterItems();
   const sortSelect = document.getElementById("sortSelect");
@@ -137,7 +158,7 @@ function sortedItems() {
   } else if (sortCategory === "highest price") {
     filteredList.sort((a, b) => b[5] - a[5]);
   }
-
+  updateSortIcon()
   console.log("sorted items are: " + filteredList[0][0])
   return filteredList;
 }
