@@ -234,7 +234,46 @@ h2 {
 }
 
 .filters label {
-    font-size: 18px;
+    font-size: 17px;
+    width: 60%;
+    padding-top: 8px;
+}
+
+.filter-icon,
+.sort-icon {
+    display: none;
+}
+
+/* Show the label when screen width is greater than or equal to 992px */
+@media (min-width: 992px) {
+    #filterLabel {
+        display: inline; /* Show the label */
+    }
+    .filter-icon {
+        display: none; /* Hide the filter icon */
+    }
+    #sortLabel{
+        display: inline;
+    }
+    .sort-icon{
+        display: none;
+    }
+}
+
+/* Show the filter icon when screen width is less than 992px */
+@media (max-width: 991px) {
+    #filterLabel {
+        display: none; /* Hide the label */
+    }
+    .filter-icon {
+        display: inline; /* Show the filter icon */
+    }
+    #sortLabel {
+        display: none; /* Hide the label */
+    }
+    .sort-icon {
+        display: inline; /* Show the filter icon */
+    }
 }
 
 .filters {
@@ -276,7 +315,7 @@ li:last-child .search-container {
 }
 
 .searchButton {
-    height: 3.8em;
+    height: 4.7em;
     width: 10%;
     padding: 0;
     margin: 0;
@@ -498,7 +537,7 @@ body {
 }
 .searchInput {
     width: 80%;
-    height: 4em;
+    height: 5em;
     padding: 8px;
 }
 
