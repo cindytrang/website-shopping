@@ -56,6 +56,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        width: 50%;
     }
 
     .shop-product-details.shop-product-left {
@@ -80,5 +81,14 @@
     .shop-product-details.shop-product-units,
     .shop-product-buying {
         margin-top: 5px; /* Adjust spacing between items on the right */
+    }
+
+    .like{
+        float: inline-start;
+        align-content: end;
+        color: var(--colour-3);
+        position: relative;
+        border: none;
+        padding: 10px;
     }
 }
