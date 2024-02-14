@@ -212,6 +212,8 @@ h2 {
 
 .filterContainer,
 .sortContainer {
+    position: relative;
+    z-index: 300000;
     display: flex;
     align-items: center;
     gap: 10px;
