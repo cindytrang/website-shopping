@@ -252,10 +252,10 @@ h2 {
     .filter-icon {
         display: none; /* Hide the filter icon */
     }
-    #sortLabel{
+    #sortLabel {
         display: inline;
     }
-    .sort-icon{
+    .sort-icon {
         display: none;
     }
 }
@@ -1230,7 +1230,13 @@ input[type='password']:hover {
 }
 
 .checkout-container {
-    padding-top: 3%;
+    padding-top: 10%;
+}
+
+@media (max-width: 992px) {
+    .checkout-container {
+        padding-top: 18%;
+    }
 }
 
 .checkout-table {
