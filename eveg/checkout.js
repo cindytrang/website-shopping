@@ -84,7 +84,7 @@ function calculateBasket(){
     })
   }
   document.querySelector(".basket-total").innerHTML = "Basket total: £" + (total / 100).toFixed(2);
-  if(total < 0){
+  if(total == 0){
     document.querySelector('.checkoutList').innerHTML = '';
     var emptyBasket = document.createElement('h3');
     emptyBasket.id = "empty-message";
