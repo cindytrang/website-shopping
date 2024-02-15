@@ -54,8 +54,12 @@ function calculateBasket(){
   for(const productID in basket){
     console.log(productID);
     let quantity = basket[productID];
+    console.log(quantity);
     let price = productDetails[productID].price;
-    let productTotal = price * quantity;
+    let productTotal = 0; 
+    if (quantity > 0 ){
+      productTotal = price * quantity; 
+    }
     total = total + productTotal;
     let totalID = productID + "total";
     let removeID = productID + "remove";
@@ -80,7 +84,7 @@ function calculateBasket(){
     })
   }
   document.querySelector(".basket-total").innerHTML = "Basket total: £" + (total / 100).toFixed(2);
-  if(total == 0){
+  if(total < 0){
     document.querySelector('.checkoutList').innerHTML = '';
     var emptyBasket = document.createElement('h3');
     emptyBasket.id = "empty-message";
@@ -102,6 +106,7 @@ function changeValue(ID){
   //add in remove from basket buttons
   var inputValue = document.getElementById(ID).value;
   let basket = JSON.parse(getCookie("basket"));
+  console.log(inputValue);
   if (inputValue < 0 ){
     fetch('errorPopUp.html')
           .then(response => response.text())
@@ -111,21 +116,28 @@ function changeValue(ID){
             showError('You cannot enter a negative number of items');
           })
           .catch(error => console.error('Error fetching errorPopUp.html', error));
-  } else {
-    basket[ID] = inputValue;
-    setCookie('basket', JSON.stringify(basket));
-    //changeQuantity(ID, inputValue);
-    document.getElementById(ID + "total").innerText = "£"+((inputValue * productDetails[ID].price)/100).toFixed(2);
-    var total = document.querySelector(".basket-total");
-  
-    var inputs = document.getElementsByClassName("checkoutQuant");
-        var totalPrice = 0;
-        for (var i = 0; i < inputs.length; i++) {
-          totalPrice += parseFloat(inputs[i].value * productDetails[inputs[i].id].price);
         }
-    total.innerHTML = "";
-    total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
-  }
+          console.log("here");
+          basket[ID] = inputValue;
+          setCookie('basket', JSON.stringify(basket));
+          if (inputValue < 0 ){
+            document.getElementById(ID + "total").innerText = "£"+((0 * productDetails[ID].price)/100).toFixed(2);
+          } else {
+            document.getElementById(ID + "total").innerText = "£"+((inputValue * productDetails[ID].price)/100).toFixed(2);
+          }
+            var total = document.querySelector(".basket-total");
+        
+          var inputs = document.getElementsByClassName("checkoutQuant");
+              var totalPrice = 0;
+              for (var i = 0; i < inputs.length; i++) {
+                console.log("check-basket2");
+                if (inputs[i].value > 0 ){
+                  totalPrice += parseFloat(inputs[i].value * productDetails[inputs[i].id].price);
+                }
+              }
+          total.innerHTML = "";
+          total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
+
 }
 
 function removeItem(ID){
