@@ -107,6 +107,7 @@ function changeValue(ID){
   var inputValue = document.getElementById(ID).value;
   let basket = JSON.parse(getCookie("basket"));
   console.log(inputValue);
+
   if (inputValue < 0 ){
     fetch('errorPopUp.html')
           .then(response => response.text())
@@ -130,7 +131,6 @@ function changeValue(ID){
           var inputs = document.getElementsByClassName("checkoutQuant");
               var totalPrice = 0;
               for (var i = 0; i < inputs.length; i++) {
-                console.log("check-basket2");
                 if (inputs[i].value > 0 ){
                   totalPrice += parseFloat(inputs[i].value * productDetails[inputs[i].id].price);
                 }
@@ -145,12 +145,13 @@ function removeItem(ID){
   row.remove();
 
   var total = document.querySelector(".basket-total");
-
   var inputs = document.getElementsByClassName("checkoutQuant");
-      var totalPrice = 0;
-      for (var i = 0; i < inputs.length; i++) {
-        totalPrice += parseFloat(inputs[i].value * productDetails[inputs[i].id].price);
-      }
+  var totalPrice = 0;
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].value > 0 ){
+      totalPrice += parseFloat(inputs[i].value * productDetails[inputs[i].id].price);
+    }
+  }
   total.innerHTML = "";
   total.innerHTML = "Basket total: £" + (totalPrice/100).toFixed(2);
   if(totalPrice == 0){
