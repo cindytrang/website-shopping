@@ -108,7 +108,7 @@ function changeValue(ID){
   let basket = JSON.parse(getCookie("basket"));
   console.log(inputValue);
 
-  if (inputValue < 0 ){
+  if (inputValue === 0 ){
     fetch('errorPopUp.html')
           .then(response => response.text())
           .then(html => {
