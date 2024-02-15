@@ -1,103 +1,116 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
-        <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
-        <link rel="stylesheet" href="common.css">
-        <link rel="stylesheet" href="colours.css">
-        <script src="products.js"></script>
-        <script src="checkout.js"></script>
-        <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
-        <link rel="stylesheet" type="text/css" media="all" href="packages/o2system-ui/o2system-ui.css">
-        <link rel="stylesheet" type="text/css" media="all" href="packages/owl-carousel/owl-carousel.css">
-        <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
-        <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
-        <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
-        <script type="text/javascript" src="jquery.js"></script>
-        <script type="text/javascript" src="jquery-migrate.js"></script>
-        <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
-        <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
-        <script type="text/javascript" src="packages/o2system-ui/o2system-ui.js"></script>
-        <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
-        <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
-        <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
-        <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        </head>
-        <title>E-Veg Shop</title>
-      </head>
-    <body>
-      <div class="index-list">
-        <div class="page-header">
-        <div class="container">
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
-            <!-- Navbar Brand -->
-            <a href="index.html" class="navbar-brand">
-              <img class="logo" src="images/e_veg_logo.png"></img>
-            </a>
-    
-            <!-- Toggle Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="" role="button" ><i class="fa fa-bars" aria-hidden="true" style="color: rgba(0,0,0,.5);"></i></span>
-            </button>
-            <!-- Navbar Menu -->
-            <div class="collapse navbar-collapse" id="navbarcollapse">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="color: black;">
-                  <a href="homepage.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item" style="color: black;">
-                  <a href="index.html" class="nav-link">Shop</a>
-                </li>
-                <li class="nav-item" style="color: black;">
-                  <a href="favourites.html" class="nav-link">Favourites</a>
-                </li>
-                <!-- <li class="nav-item" style="color: black;">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="shopmobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 601px)" href="shop.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="colours.css">
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery-migrate.js"></script>
+  <script src="products.js"></script>
+  <script src="checkout.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/o2system-ui/o2system-ui.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/owl-carousel/owl-carousel.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/cloudzoom/cloudzoom.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/thumbelina/thumbelina.css">
+  <link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap-touchspin/bootstrap-touchspin.css">
+  <script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+  <script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+  <script type="text/javascript" src="packages/o2system-ui/o2system-ui.js"></script>
+  <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+  <script type="text/javascript" src="packages/cloudzoom/cloudzoom.js"></script>
+  <script type="text/javascript" src="packages/owl-carousel/owl-carousel.js"></script>
+  <script type="text/javascript" src="packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script type="text/javascript" src="products.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="shop.js"></script>
+</head>
+<title>E-Veg Shop</title>
+</head>
+
+<body>
+  <div class="index-list">
+    <div class="page-header">
+      <div class="container">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent" id="page-navigation">
+          <!-- Navbar Brand -->
+          <a href="index.html" class="navbar-brand">
+            <img class="logo" src="images/e_veg_logo.png"></img>
+          </a>
+
+          <!-- Toggle Button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="" role="button"><i class="fa fa-bars" aria-hidden="true"
+                style="color: rgba(0,0,0,.5);"></i></span>
+          </button>
+
+          <!-- Navbar Menu -->
+          <div class="collapse navbar-collapse" id="navbarcollapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item" style="color: black;">
+                <a href="homepage.html" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item" style="color: black;">
+                <a href="index.html" class="nav-link">Shop</a>
+              </li>
+              <li class="nav-item" style="color: black;">
+                <a href="favourites.html" class="nav-link">Favourites</a>
+              </li>
+              <!-- <li class="nav-item" style="color: black;">
                   <a href="register.html" class="nav-link">Register</a>
                 </li>
                 <li class="nav-item" style="color: black;">
                   <a href="login.html" class="nav-link">Login</a>
                 </li> -->
-                <li class="nav-item" style="color: black;">
-                  <a href="#" class="nav-link"><span>Contact</span></a>
-                </li>
-                <li class="nav-item"style="color: black;">
-                  <a href="about.html" class="nav-link"><span>About</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="nav-bar dropdown">
-                    <div class="avatar-header"><img src="images/e_veg_logo.png" alt="User Avatar"></div> John Doe
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="transaction.html">Transactions History</a>
-                    <a class="dropdown-item" href="setting.html">Settings</a>
-                    <a class="dropdown-item" href="register.html">Register</a>
-                    <a class="dropdown-item" href="login.html">Login</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-item" style="color: black;">
+                <a href="#" class="nav-link"><span>Contact</span></a>
+              </li>
+              <li class="nav-item" style="color: black;">
+                <a href="about.html" class="nav-link"><span>About</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="avatar-header"><img src="images/img/logo/profile.png" alt="User Avatar"></div> John
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                  <a class="dropdown-item" href="setting.html">Settings</a>
+                  <a class="dropdown-item" href="register.html">Register</a>
+                  <a class="dropdown-item" href="login.html">Login</a>
+                </div>
+              </li>
+            </ul>
           </div>
-        </nav>
-        </div>
+      </div>
+      </nav>
     </div>
+  </div>
+  </div>
+
+  <div id="page-content" class="page-content custom-section">
+    <div class="checkout-container">
+      <h2 id="basket-title">Basket Contents</h2>
+      <table class="checkoutList">
+      </table>
+      <div id="externalPopUpContainer" aria-label="error pop up"></div>
+      <div class="submit-payment">
+        <div class="basket-total"> Basket total: </div>
+        <a href="pay.html" id="pay-button"><button class="payment-button"> Proceed to Payment </button></a>
+      </div>
+      <div class="about">
+        <div>&copy; 2021 InterVeg Coventry Ltd.</div>
+        <div>Fresh produce from the Midland's green countryside.</div>
+      </div>
     </div>
-        <body>
-           <div class = "checkout-container">
-              <h2 id = "basket-title">Basket Contents</h2>
-              <table class="checkoutList">
-              </table>      
-              <div id = "externalPopUpContainer" aria-label ="error pop up"></div>
-              <div class = "submit-payment">
-                <div class = "basket-total"> Basket total: </div>     
-                <a href = "pay.html" id="pay-button"><button class = "payment-button"> Proceed to Payment </button></a>
-              </div>
-              <div class="about">
-                <div>&copy; 2021 InterVeg Coventry Ltd.</div>
-                <div>Fresh produce from the Midland's green countryside.</div>
-              </div>
-              </div>
-            </div>
-    </body>
+  </div>
+</body>
+
 </html>
