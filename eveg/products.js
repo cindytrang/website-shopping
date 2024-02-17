@@ -12,9 +12,9 @@ function initProducts(callback){
     }
 
     if(callback !== undefined)
-      callback();
+    callback();
     console.log("here1");
-    let products = JSON.parse(getCookie("basket"));
+    let products = JSON.parse(getCookie("basket" || 0));
     console.log("here"+products);
 
 }
