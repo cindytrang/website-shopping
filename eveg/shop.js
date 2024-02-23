@@ -83,25 +83,20 @@ function init() {
     });
     resetListeners();
     initProducts(redraw);
-    
-    // Define a function to toggle the visibility of the dropdown menu
-    function toggleDropdownMenu() {
-        const dropdownMenu = document.querySelector('.dropdown-menu.shopping-cart');
-        dropdownMenu.classList.toggle('show');
-    }
 
     const basketIcon = document.querySelector('.nav-item.dropdown .fa.fa-shopping-basket');
     basketIcon.addEventListener('click', toggleDropdownMenu);
   
-    // Add event listeners to both addToBasket buttons and the shopping basket icon
-    const addToBasketButtons = document.querySelectorAll('.addToBasket');
-    addToBasketButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-          console.log("clicked basket");
-            addToBasketClicked(event);
-            toggleDropdownMenu();
-        });
-    });
+    basket = JSON.parse(getCookie("basket"));
+//     // Add event listeners to both addToBasket buttons and the shopping basket icon
+//     const addToBasketButtons = document.querySelectorAll('.addToBasket');
+//     addToBasketButtons.forEach(button => {
+//         button.addEventListener('click', function(event) {
+//           console.log("clicked basket");
+//             addToBasketClicked(event);
+//             toggleDropdownMenu();
+//         });
+//     });
 
     // Add event listeners to like icon 
     // const likeButton = document.querySelectorAll('.like');
@@ -116,7 +111,9 @@ function init() {
   }
 
 
-  $(document).ready(function(){
+$(document).ready(function () {
+  basket = JSON.parse(getCookie("basket"));
+  updateShoppingCartDropdown();
 	$(window).scroll(function () {
 			if ($(this).scrollTop() > 50) {
 				$('#back-to-top').fadeIn();
@@ -247,7 +244,6 @@ function init() {
       return '<i id="heartIconFull" class="fas fa-heart" ></i>';
     }
     
-  
   }
 
 
@@ -419,18 +415,36 @@ function init() {
   }
 
   //Redraw all products based on the card template
-  function redraw(){
+function redraw() {
+    
+    var loading = document.getElementById("loading");
+    var products = document.getElementById("page-content");
 
+    // Show the div
+    loading.removeAttribute("hidden");
+    products.setAttribute("hidden", true);
+  
     console.log("Redrawing...")
 
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
-
+    
+    console.log("Checking basket contents: " + basket)
+     if (basket !== null) {
+      updateItemCount();
+      updateShoppingCartDropdown();
+    }
+  
+    // Display the loading screen for 3 seconds
+    setTimeout(function() {
+      console.log("Counting down...")
+      loading.setAttribute("hidden", true);
+      products.removeAttribute("hidden");
+    }, 900); // 
 
     var shownProducts = productDetails;
 
     console.log("shown products" + shownProducts)
-
 
     var numProducts = shownProducts.length;
 
@@ -461,7 +475,6 @@ function init() {
           break;
 
       }
-      
     });
 
     document.querySelectorAll(".like").forEach(function(element){
@@ -476,7 +489,18 @@ function init() {
       
     });
 
-  // Attach event listener to like button
+    // Add event listeners to both addToBasket buttons and the shopping basket icon
+    const addToBasketButtons = document.querySelectorAll('.addToBasket');
+    addToBasketButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          console.log("clicked basket");
+            updateItemCount();
+            toggleDropdownMenu();
+            updateShoppingCartDropdown();
+        });
+    });
+
+    // Attach event listener to like button
     document.querySelectorAll(".like").forEach(function(element){
       console.log("REFRESHED PAGE");
       var field = element.getAttribute("data-field");
@@ -491,7 +515,6 @@ function init() {
       }
     });
     resetListeners();
-
     updateQuantityInputs();
   }
   
@@ -505,8 +528,7 @@ function init() {
     }
   }
 
-  //Recalculate basket
-  function refreshBasket(){
+  function updateCheckoutList() {
     let total = 0;
     let totalCount = 0;
     for(const productID in basket){
@@ -515,6 +537,33 @@ function init() {
       total = total + (price * quantity);
       totalCount++;
     }
+    // document.querySelector("#totalItems").innerHTML = totalCount;
+    // document.querySelector("#basketNumTotal").innerHTML = (total / 100).toFixed(2);
+  }
+
+  // Define a function to toggle the visibility of the dropdown menu
+  function toggleDropdownMenu() {
+      const dropdownMenu = document.querySelector('.dropdown-menu.shopping-cart');
+      dropdownMenu.classList.toggle('show');
+  }
+
+  function updateItemCount() {
+    let totalCount = 0;
+
+    for(const productID in basket){
+      totalCount++;
+    }
+    document.querySelector("#totalItems").innerHTML = totalCount;
+  }
+
+  //Recalculate basket
+  function refreshBasket() {
+    console.log("Changed the quantity")
+    setCookie('basket', JSON.stringify(basket));
+    updateCheckoutList();
+  }
+
+  function updateShoppingCartDropdown() {
     setCookie('basket', JSON.stringify(basket));
     try {
       document.querySelector("#totalItems").innerHTML = totalCount;
