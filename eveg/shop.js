@@ -1,8 +1,9 @@
 
 let productDetails = {};
 let productsFiltered = {};
+
 let searchStr = "";
-let basket = {}; 
+let basket = {};
 let filters = {};
 //Each product is based on a 'card'; a box that contains information about that product.
 //You can change the card template here. The [EVEGPRODUCT#] will always be subsituted for 
@@ -87,6 +88,15 @@ function init() {
     basketIcon.addEventListener('click', toggleDropdownMenu);
   
     basket = JSON.parse(getCookie("basket"));
+//     // Add event listeners to both addToBasket buttons and the shopping basket icon
+//     const addToBasketButtons = document.querySelectorAll('.addToBasket');
+//     addToBasketButtons.forEach(button => {
+//         button.addEventListener('click', function(event) {
+//           console.log("clicked basket");
+//             addToBasketClicked(event);
+//             toggleDropdownMenu();
+//         });
+//     });
 
     // Add event listeners to like icon 
     // const likeButton = document.querySelectorAll('.like');
@@ -554,20 +564,31 @@ function redraw() {
   }
 
   function updateShoppingCartDropdown() {
+    setCookie('basket', JSON.stringify(basket));
+    try {
+      document.querySelector("#totalItems").innerHTML = totalCount;
+      document.querySelector("#basketNumTotal").innerHTML = (total / 100).toFixed(2);
+    }catch(e){
+      
+    }
+    return total;
+  }
+  
+function addToBasketClicked(event) {
+    let productId = event.target.parentElement.getAttribute('data-num');
+    updateShoppingCartDropdown(); // Update the shopping cart dropdown
+}
+
+function updateShoppingCartDropdown() {
     let cartItemsContainer = document.getElementById('cartItemsContainer');
     cartItemsContainer.innerHTML = ''; // Clear previous items
 
     let totalPrice = 0;
 
-    // Ensure you're using the `basket` variable loaded from the cookie
     for (const productID in basket) {
         const quantity = basket[productID];
-        if (!productDetails[productID]) {
-            // Handle case where productID might not exist in productDetails
-            continue;
-        }
         const product = productDetails[productID];
-        const productTotal = product.price * quantity;
+        const productTotal = productDetails[productID].price * quantity;
         totalPrice += productTotal;
 
         const listItem = document.createElement('li');
@@ -579,9 +600,10 @@ function redraw() {
               </div>
               <div class="media-body">
                   <h5><a>${product.name}</a></h5>
-                  <div class="shop-product-details shop-product-price" data-field="price" data-num="${productID}">
+                  <div class="shop-product-details shop-product-price" data-field="price" data-num="0">
                   <span>£${(productTotal / 100).toFixed(2)}</span>
-                  <p><span class="discount text-muted">Qty: ${quantity}</span></div></p>
+                  <p><span class="discount text-muted">Qty: ${quantity}</span>
+                  </div></p>
               </div>
           </div>
           `;
@@ -593,7 +615,7 @@ function redraw() {
     cartItemsContainer.appendChild(totalItem);
 
     // Update the total price displayed outside the dropdown
-    document.getElementById('totalPrice').textContent = `${(totalPrice / 100).toFixed(2)}`;
+    document.getElementById('totalPrice').textContent = (totalPrice / 100).toFixed(2);
 }
 
 window.addEventListener("load", init);
@@ -615,3 +637,4 @@ function hideError(){
   document.getElementById('errorPopUp').style.display = 'none'; 
   document.getElementById('overlay').style.display = 'none';
 }
+
