@@ -353,9 +353,9 @@ $(document).ready(function () {
             .catch(error => console.error('Error fetching errorPopUp.html', error));
     } else {
       // basket[productID] = newQuantity;
-      basket[productDetails[productID].name] = { quantity: newQuantity, price: productDetails[productID].price };
+      basket[allProductDetails[productID].name] = { quantity: newQuantity, price: allProductDetails[productID].price };
       if(newQuantity == 0)
-        delete basket[productDetails[productID].name];
+        delete basket[allProductDetails[productID].name];
       document.querySelector(".buyInput[data-num='"+productID+"']").value = newQuantity;
       refreshBasket();
     }
@@ -365,17 +365,17 @@ $(document).ready(function () {
   //Add 1 to the quantity
   function increment(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[productDetails[thisID].name] === undefined){
-      basket[productDetails[thisID].name] = { quantity: 0, price: 0 };
+    if(basket[allProductDetails[thisID].name] === undefined){
+      basket[allProductDetails[thisID].name] = { quantity: 0, price: 0 };
     } 
-    console.log(basket[productDetails[thisID].name]);
-    changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)+1);
+    console.log(basket[allProductDetails[thisID].name]);
+    changeQuantity(thisID,parseInt(basket[allProductDetails[thisID].name].quantity)+1);
   }
 
   //Subtract 1 from the quantity
   function decrement(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[productDetails[thisID].name] === undefined){
+    if(basket[allProductDetails[thisID].name] === undefined){
       changeQuantity(thisID,0);
       fetch('errorPopUp.html')
           .then(response => response.text())
@@ -387,8 +387,8 @@ $(document).ready(function () {
           .catch(error => console.error('Error fetching errorPopUp.html', error));
 
     }else{
-      if(basket[productDetails[thisID].name] > 0){
-        changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)-1);
+      if(basket[allProductDetails[thisID].name] > 0){
+        changeQuantity(thisID,parseInt(basket[allProductDetails[thisID].name].quantity)-1);
       }
     }
   }
@@ -579,10 +579,10 @@ function addToBasketClicked(event) {
     updateShoppingCartDropdown(); // Update the shopping cart dropdown
 }
 
-function findProductByName(productName) {
-    return productDetails.find(product => product.name === productName);
-}
 
+function findProductByName(productName) {
+    return allProductDetails.find(product => product.name === productName);
+}
 function updateShoppingCartDropdown() {
     let cartItemsContainer = document.getElementById('cartItemsContainer');
     cartItemsContainer.innerHTML = ''; // Clear previous items
@@ -594,7 +594,7 @@ function updateShoppingCartDropdown() {
         const product = findProductByName(productName);
         const productTotal = price * quantity;
         totalPrice += productTotal;
-
+        console.log("eror", product)
         const listItem = document.createElement('li');
         listItem.classList.add('shopping-cart-item'); // Add a class to style each item if needed
         listItem.innerHTML = `
