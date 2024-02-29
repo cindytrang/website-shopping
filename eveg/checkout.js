@@ -27,8 +27,9 @@ function showCreditCardPage(){
     document.querySelector('#customerDetails').appendChild(payIFrame);
   }
 }
-
-
+function findProductByName(productName) {
+    return productDetails.find(product => product.name === productName);
+}
 /*
 * Calculate the totals and show the basket
 */
@@ -51,11 +52,12 @@ function calculateBasket(){
   headerRow.appendChild(itemPriceHeader);
   headerRow.appendChild(totalHeader);
   document.querySelector('.checkoutList').appendChild(headerRow);
-  for(const productID in basket){
-    console.log(productID);
-    let quantity = basket[productID];
+  for(const productName in basket){
+    console.log(productName);
+    let { quantity, price } = basket[productName];
+    const product = findProductByName(productName);
+    const productID = product.productID;
     console.log(quantity);
-    let price = productDetails[productID].price;
     let productTotal = 0; 
     if (quantity > 0 ){
       productTotal = price * quantity; 
@@ -78,7 +80,7 @@ function calculateBasket(){
     document.querySelector('.checkoutList').appendChild(thisProduct);
     var remove = document.getElementById(removeID);
     remove.addEventListener("click", function(){
-      delete basket[productID];
+      delete basket[productDetails[productID].name];
       setCookie('basket', JSON.stringify(basket));
       removeItem(productID + "row");
     })
@@ -120,6 +122,7 @@ function changeValue(ID){
         }
           console.log("here");
           basket[ID] = inputValue;
+          
           setCookie('basket', JSON.stringify(basket));
           if (inputValue < 0 ){
             document.getElementById(ID + "total").innerText = "£"+((0 * productDetails[ID].price)/100).toFixed(2);
