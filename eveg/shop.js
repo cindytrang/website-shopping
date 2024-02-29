@@ -353,9 +353,9 @@ $(document).ready(function () {
             .catch(error => console.error('Error fetching errorPopUp.html', error));
     } else {
       // basket[productID] = newQuantity;
-      basket[allProductDetails[productID].name] = { quantity: newQuantity, price: allProductDetails[productID].price };
+      basket[productDetails[productID].name] = { quantity: newQuantity, price: productDetails[productID].price };
       if(newQuantity == 0)
-        delete basket[allProductDetails[productID].name];
+        delete basket[productDetails[productID].name];
       document.querySelector(".buyInput[data-num='"+productID+"']").value = newQuantity;
       refreshBasket();
     }
@@ -375,7 +375,7 @@ $(document).ready(function () {
   //Subtract 1 from the quantity
   function decrement(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[allProductDetails[thisID].name] === undefined){
+    if(basket[productDetails[thisID].name] === undefined){
       changeQuantity(thisID,0);
       fetch('errorPopUp.html')
           .then(response => response.text())
@@ -520,7 +520,7 @@ function redraw() {
   
   function updateQuantityInputs(){
     for (let buyInput of document.querySelectorAll(".buyInput")) {
-      let { quantity, price } = basket[allProductDetails[buyInput.getAttribute("data-num")].name];
+      let { quantity, price } = basket[productDetails[buyInput.getAttribute("data-num")].name];
       if(isNaN(quantity))
         quantity = 0;
 
