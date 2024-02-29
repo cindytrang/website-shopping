@@ -1,7 +1,7 @@
 
 let productDetails = {};
 let productsFiltered = {};
-
+let allProductDetails = [];
 let searchStr = "";
 let basket = {};
 let filters = {};
@@ -365,11 +365,11 @@ $(document).ready(function () {
   //Add 1 to the quantity
   function increment(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[allProductDetails[thisID].name] === undefined){
-      basket[allProductDetails[thisID].name] = { quantity: 0, price: 0 };
+    if(basket[productDetails[thisID].name] === undefined){
+      basket[productDetails[thisID].name] = { quantity: 0, price: 0 };
     } 
-    console.log(basket[allProductDetails[thisID].name]);
-    changeQuantity(thisID,parseInt(basket[allProductDetails[thisID].name].quantity)+1);
+    console.log(basket[productDetails[thisID].name]);
+    changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)+1);
   }
 
   //Subtract 1 from the quantity
@@ -387,8 +387,8 @@ $(document).ready(function () {
           .catch(error => console.error('Error fetching errorPopUp.html', error));
 
     }else{
-      if(basket[allProductDetails[thisID].name] > 0){
-        changeQuantity(thisID,parseInt(basket[allProductDetails[thisID].name].quantity)-1);
+      if(basket[productDetails[thisID].name] > 0){
+        changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)-1);
       }
     }
   }
@@ -519,8 +519,8 @@ function redraw() {
   }
   
   function updateQuantityInputs(){
-    for(let buyInput of document.querySelectorAll(".buyInput")){
-      let quantity = basket[buyInput.getAttribute("data-num")];
+    for (let buyInput of document.querySelectorAll(".buyInput")) {
+      let { quantity, price } = basket[allProductDetails[buyInput.getAttribute("data-num")].name];
       if(isNaN(quantity))
         quantity = 0;
 
