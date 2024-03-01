@@ -1,7 +1,7 @@
 
 let productDetails = {};
 let productsFiltered = {};
-
+let allProductDetails = [];
 let searchStr = "";
 let basket = {};
 let filters = {};
@@ -282,7 +282,6 @@ $(document).ready(function () {
         packsize: newItem[3],
         image: newItem[6],
         liked: newItem[7]}
-
     }
     
     redraw()
@@ -353,9 +352,10 @@ $(document).ready(function () {
             })
             .catch(error => console.error('Error fetching errorPopUp.html', error));
     } else {
-      basket[productID] = newQuantity;
+      // basket[productID] = newQuantity;
+      basket[productDetails[productID].name] = { quantity: newQuantity, price: productDetails[productID].price };
       if(newQuantity == 0)
-        delete basket[productID];
+        delete basket[productDetails[productID].name];
       document.querySelector(".buyInput[data-num='"+productID+"']").value = newQuantity;
       refreshBasket();
     }
@@ -365,18 +365,20 @@ $(document).ready(function () {
   //Add 1 to the quantity
   function increment(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[thisID] === undefined){
-      basket[thisID] = 0;
+    if(basket[productDetails[thisID].name] === undefined){
+      basket[productDetails[thisID].name] = { quantity: 0, price: 0 };
     } 
-    console.log(basket[thisID]);
-    changeQuantity(thisID,parseInt(basket[thisID])+1);
+    console.log(basket[productDetails[thisID].name]);
+    changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)+1);
   }
 
   //Subtract 1 from the quantity
   function decrement(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[thisID] === undefined){
-      changeQuantity(thisID,0);
+    var productName = productDetails[thisID].name;
+    if (basket[productName] && basket[productName].quantity > 0) {
+      changeQuantity(thisID, parseInt(basket[productName].quantity) - 1);
+    } else {
       fetch('errorPopUp.html')
           .then(response => response.text())
           .then(html => {
@@ -385,11 +387,6 @@ $(document).ready(function () {
             showError('You cannot enter a negative number of items');
           })
           .catch(error => console.error('Error fetching errorPopUp.html', error));
-
-    }else{
-      if(basket[thisID] > 0){
-        changeQuantity(thisID,parseInt(basket[thisID])-1);
-      }
     }
   }
 
@@ -518,22 +515,38 @@ function redraw() {
     updateQuantityInputs();
   }
   
-  function updateQuantityInputs(){
-    for(let buyInput of document.querySelectorAll(".buyInput")){
-      let quantity = basket[buyInput.getAttribute("data-num")];
-      if(isNaN(quantity))
-        quantity = 0;
+  // function updateQuantityInputs(){
+  //   for (let buyInput of document.querySelectorAll(".buyInput")) {
+  //     let { quantity, price } = basket[allProductDetails[buyInput.getAttribute("data-num")].name];
+  //     if(isNaN(quantity))
+  //       quantity = 0;
 
-      buyInput.value = quantity;
-    }
+  //     buyInput.value = quantity;
+  //   }
+  // }
+
+  function updateQuantityInputs(){
+    document.querySelectorAll(".buyInput").forEach(function(buyInput){
+      var cardContent = buyInput.closest('.card__content');
+      var cardTitleElement = cardContent.querySelector('.shop-product-title[data-field="title"]');
+      var cardTitle = cardTitleElement.innerText.trim();
+      var product = findProductByName(cardTitle);
+      console.log('Card Title', cardTitle);
+      if(product && basket[product.name]) {
+        let { quantity } = basket[product.name];
+        if(isNaN(quantity)) quantity = 0; 
+        buyInput.value = quantity;
+      } else {
+        buyInput.value = 0;
+      }
+    });
   }
 
   function updateCheckoutList() {
     let total = 0;
     let totalCount = 0;
-    for(const productID in basket){
-      let quantity = basket[productID];
-      let price = productDetails[productID].price;
+    for (const productName in basket) {
+      const { quantity, price } = basket[productName];
       total = total + (price * quantity);
       totalCount++;
     }
@@ -560,6 +573,7 @@ function redraw() {
   function refreshBasket() {
     console.log("Changed the quantity")
     setCookie('basket', JSON.stringify(basket));
+    console.log("Basket object", basket)
     updateCheckoutList();
   }
 
@@ -579,18 +593,23 @@ function addToBasketClicked(event) {
     updateShoppingCartDropdown(); // Update the shopping cart dropdown
 }
 
+
+function findProductByName(productName) {
+    return allProductDetails.find(product => product.name === productName);
+}
+
 function updateShoppingCartDropdown() {
     let cartItemsContainer = document.getElementById('cartItemsContainer');
     cartItemsContainer.innerHTML = ''; // Clear previous items
 
     let totalPrice = 0;
 
-    for (const productID in basket) {
-        const quantity = basket[productID];
-        const product = productDetails[productID];
-        const productTotal = productDetails[productID].price * quantity;
+    for (const productName in basket) {
+        const { quantity, price } = basket[productName];
+        const product = findProductByName(productName);
+        const productTotal = price * quantity;
         totalPrice += productTotal;
-
+        console.log("eror", product)
         const listItem = document.createElement('li');
         listItem.classList.add('shopping-cart-item'); // Add a class to style each item if needed
         listItem.innerHTML = `
