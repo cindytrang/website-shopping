@@ -518,14 +518,31 @@ function redraw() {
     updateQuantityInputs();
   }
   
-  function updateQuantityInputs(){
-    for (let buyInput of document.querySelectorAll(".buyInput")) {
-      let { quantity, price } = basket[productDetails[buyInput.getAttribute("data-num")].name];
-      if(isNaN(quantity))
-        quantity = 0;
+  // function updateQuantityInputs(){
+  //   for (let buyInput of document.querySelectorAll(".buyInput")) {
+  //     let { quantity, price } = basket[allProductDetails[buyInput.getAttribute("data-num")].name];
+  //     if(isNaN(quantity))
+  //       quantity = 0;
 
-      buyInput.value = quantity;
-    }
+  //     buyInput.value = quantity;
+  //   }
+  // }
+
+  function updateQuantityInputs(){
+    document.querySelectorAll(".buyInput").forEach(function(buyInput){
+      var cardContent = buyInput.closest('.card__content');
+      var cardTitleElement = cardContent.querySelector('.shop-product-title[data-field="title"]');
+      var cardTitle = cardTitleElement.innerText.trim();
+      var product = findProductByName(cardTitle);
+      console.log('Card Title', cardTitle);
+      if(product && basket[product.name]) {
+        let { quantity } = basket[product.name];
+        if(isNaN(quantity)) quantity = 0; 
+        buyInput.value = quantity;
+      } else {
+        buyInput.value = 0;
+      }
+    });
   }
 
   function updateCheckoutList() {
@@ -583,6 +600,7 @@ function addToBasketClicked(event) {
 function findProductByName(productName) {
     return allProductDetails.find(product => product.name === productName);
 }
+
 function updateShoppingCartDropdown() {
     let cartItemsContainer = document.getElementById('cartItemsContainer');
     cartItemsContainer.innerHTML = ''; // Clear previous items
