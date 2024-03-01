@@ -375,8 +375,10 @@ $(document).ready(function () {
   //Subtract 1 from the quantity
   function decrement(ev){
     var thisID = ev.target.parentElement.closest(".card__content").getAttribute("data-num");
-    if(basket[productDetails[thisID].name] === undefined){
-      changeQuantity(thisID,0);
+    var productName = productDetails[thisID].name;
+    if (basket[productName] && basket[productName].quantity > 0) {
+      changeQuantity(thisID, parseInt(basket[productName].quantity) - 1);
+    } else {
       fetch('errorPopUp.html')
           .then(response => response.text())
           .then(html => {
@@ -385,11 +387,6 @@ $(document).ready(function () {
             showError('You cannot enter a negative number of items');
           })
           .catch(error => console.error('Error fetching errorPopUp.html', error));
-
-    }else{
-      if(basket[productDetails[thisID].name] > 0){
-        changeQuantity(thisID,parseInt(basket[productDetails[thisID].name].quantity)-1);
-      }
     }
   }
 
