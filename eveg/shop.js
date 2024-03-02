@@ -83,7 +83,7 @@ function init() {
     });
     resetListeners();
     initProducts(redraw);
-
+    updateShoppingCartDropdown();
     const basketIcon = document.querySelector('.nav-item.dropdown .fa.fa-shopping-basket');
     basketIcon.addEventListener('click', toggleDropdownMenu);
   
@@ -425,9 +425,9 @@ function redraw() {
 
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
-    
     console.log("Checking basket contents: " + basket)
-     if (basket !== null) {
+    if (basket !== null) {
+      updateQuantityInputs();
       updateItemCount();
       updateShoppingCartDropdown();
     }
@@ -531,7 +531,6 @@ function redraw() {
       var cardTitleElement = cardContent.querySelector('.shop-product-title[data-field="title"]');
       var cardTitle = cardTitleElement.innerText.trim();
       var product = findProductByName(cardTitle);
-      console.log('Card Title', cardTitle);
       if(product && basket[product.name]) {
         let { quantity } = basket[product.name];
         if(isNaN(quantity)) quantity = 0; 
@@ -609,7 +608,7 @@ function updateShoppingCartDropdown() {
         const product = findProductByName(productName);
         const productTotal = price * quantity;
         totalPrice += productTotal;
-        console.log("eror", product)
+        console.log("eror", quantity)
         const listItem = document.createElement('li');
         listItem.classList.add('shopping-cart-item'); // Add a class to style each item if needed
         listItem.innerHTML = `
@@ -655,5 +654,6 @@ function hideError(){
   //hide the pop up and overlay 
   document.getElementById('errorPopUp').style.display = 'none'; 
   document.getElementById('overlay').style.display = 'none';
+  document.body.style.fontSize = "16px";
 }
 
