@@ -5,6 +5,7 @@ let allProductDetails = [];
 let searchStr = "";
 let basket = {};
 let filters = {};
+let favourites = [];
 //Each product is based on a 'card'; a box that contains information about that product.
 //You can change the card template here. The [EVEGPRODUCT#] will always be subsituted for 
 //the element in the imagesArr (see fruit.js)
@@ -89,31 +90,13 @@ function init() {
     basketIcon.addEventListener('click', toggleDropdownMenu);
   
     basket = JSON.parse(getCookie("basket"));
-//     // Add event listeners to both addToBasket buttons and the shopping basket icon
-//     const addToBasketButtons = document.querySelectorAll('.addToBasket');
-//     addToBasketButtons.forEach(button => {
-//         button.addEventListener('click', function(event) {
-//           console.log("clicked basket");
-//             addToBasketClicked(event);
-//             toggleDropdownMenu();
-//         });
-//     });
-
-    // Add event listeners to like icon 
-    // const likeButton = document.querySelectorAll('.like');
-    // likeButton.forEach(button => {
-    //   button.addEventListener('click', function(event) {
-    //     console.log("clicked heart");
-    //     console.log("confused");
-    //     // toggleLike(event);
-    //     // console.log("prod " + productDetails[event.target.parentElement.getAttribute("data-num")].liked);
-    //   });
-    // });
+    favourites = JSON.parse(getCookie("favourites"));
   }
 
 
 $(document).ready(function () {
   basket = JSON.parse(getCookie("basket"));
+  favourites = JSON.parse(getCookie("favourites"));
   updateShoppingCartDropdown();
 	$(window).scroll(function () {
 			if ($(this).scrollTop() > 50) {
@@ -208,15 +191,24 @@ $(document).ready(function () {
   }
 
   function toggleLike(ev) {
+    var shopProduct = ev.target.parentElement.closest('.shop-product');
+    var cardTitleElement = shopProduct.querySelector('.shop-product-title[data-field="title"]');
+    var title = cardTitleElement.innerText.trim();
+    if (favourites.includes(title)) {
+      var buttonLiked = true;
+    } else {
+      var buttonLiked = false;
+    }
     var productNum = ev.target.parentElement.getAttribute("data-num");
-    var buttonLiked = productDetails[productNum].liked
-    console.log("Product num is: " + productNum);
+    console.log("Product title is: " + title);
     console.log("button value was: " + buttonLiked);
     var likeContainer = ev.target.parentElement;
     
     // liked
     if (buttonLiked == 0) {
-      productDetails[productNum].liked = 1;
+      if(!favourites.includes(title)) {
+        favourites.push(title)
+      }
       var fullHeartIcon = document.createElement('i');
       fullHeartIcon.id = 'heartIconFull';
       fullHeartIcon.className = 'fas fa-heart';
@@ -225,6 +217,10 @@ $(document).ready(function () {
       console.log("changed to heartIconFull");
     } else {
     //unliked
+      var index = favourites.indexOf(title);
+      if(index !== -1) {
+        favourites.splice(index, 1);
+      }
       productDetails[productNum].liked = 0;
       var emptyHeartIcon = document.createElement('i');
       emptyHeartIcon.id = 'heartIconEmpty';
@@ -233,7 +229,8 @@ $(document).ready(function () {
       likeContainer.appendChild(emptyHeartIcon);
       console.log("changed to heartIconEmpty");
     }
-    console.log("button value changed to: " + productDetails[productNum].liked)
+    console.log("new favourites cookie: " + favourites)
+    refreshFavourites();
   }
 
   function createLike(isLiked){
@@ -287,33 +284,6 @@ $(document).ready(function () {
     
     redraw()
 
-  }
-
-
-  function toggleLike(ev) {
-    var productNum = ev.target.parentElement.getAttribute("data-num");
-    var buttonLiked = productDetails[productNum].liked   
-    if (buttonLiked == 0) {
-      productDetails[productNum].liked = 1;
-    } else {
-      productDetails[productNum].liked = 0;
-    }
-
-    // Get the like button
-    var likeButton = ev.target.getElementsByClassName("like-button");
-    // Append the <i> element to the like button
-    element = document.querySelectorAll(".like")[productNum]
-    element.innerHTML = createLike(productDetails[productNum].liked)
-  }
-
-  function createLike(isLiked){
-    console.log("Checking the like button")
-    if (isLiked == 0){
-      return '<i id="heartIconEmpty" class="far fa-heart" ></i>';
-    }
-    else{
-      return '<i id="heartIconFull" class="fas fa-heart" ></i>';
-    }
   }
 
 
@@ -477,10 +447,17 @@ function redraw() {
 
     document.querySelectorAll(".like").forEach(function(element){
       var field = element.getAttribute("data-field");
-      var num = element.getAttribute("data-num");
       switch(field){
         case "likeProduct":
-          element.innerHTML = createLike(productDetails[num].liked);
+          var shopProduct = element.closest('.shop-product');
+          var cardTitleElement = shopProduct.querySelector('.shop-product-title[data-field="title"]');
+          var title = cardTitleElement.innerText.trim();
+          if (favourites.includes(title)) {
+            var isLiked = true;
+          } else {
+            var isLiked = false;
+          }
+          element.innerHTML = createLike(isLiked);
           break;
 
       }
@@ -498,20 +475,6 @@ function redraw() {
         });
     });
 
-    // Attach event listener to like button
-    document.querySelectorAll(".like").forEach(function(element){
-      console.log("REFRESHED PAGE");
-      var field = element.getAttribute("data-field");
-      var num = element.getAttribute("data-num");
-      console.log("item: " + productDetails[num].liked)
-      switch(field){
-        case "likeProduct":
-          console.log("in the like, like num is: " + productDetails[num].liked);
-          element.innerHTML = createLike(productDetails[num].liked);
-          break;
-
-      }
-    });
     resetListeners();
     updateQuantityInputs();
   }
@@ -575,6 +538,12 @@ function redraw() {
     setCookie('basket', JSON.stringify(basket));
     console.log("Basket object", basket)
     updateCheckoutList();
+  }
+
+  function refreshFavourites() {
+    console.log("fav set cookie")
+    setCookie('favourites', JSON.stringify(favourites));
+    console.log("fav object", favourites)
   }
 
   function updateShoppingCartDropdown() {
