@@ -30,26 +30,21 @@
     <script type="text/javascript" src="products.js"></script>
     <script type="text/javascript" src="shop.js"></script>
     <title>FAQ Page</title>
-    <!-- <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        } */
-
-        
-    </style> -->
-
+    <script>
+        $(document).ready(function () {
+            updateBasketAndDropdown();
+        });
+    </script>
 </head>
 
 <body>
     <div class="index-list">
         <div class="page-header">
             <div class="container">
-                <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="page-navigation">
+                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent" id="page-navigation">
                     <!-- Navbar Brand -->
                     <a href="index.html" class="navbar-brand">
-                        <img class="logo" src="images/e_veg_logo.png"></img>
+                        <img class="logo" src="images/e_veg_logo.png">
                     </a>
 
                     <!-- Toggle Button -->
@@ -58,6 +53,7 @@
                         <span class="" role="button"><i class="fa fa-bars" aria-hidden="true"
                                 style="color: rgba(0,0,0,.5);"></i></span>
                     </button>
+
                     <!-- Navbar Menu -->
                     <div class="collapse navbar-collapse" id="navbarcollapse">
                         <ul class="navbar-nav ml-auto">
@@ -71,13 +67,13 @@
                                 <a href="favourites.html" class="nav-link">Favourites</a>
                             </li>
                             <!-- <li class="nav-item" style="color: black;">
-              <a href="register.html" class="nav-link">Register</a>
-            </li>
-            <li class="nav-item" style="color: black;">
-              <a href="login.html" class="nav-link">Login</a>
-            </li> -->
+                  <a href="register.html" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item" style="color: black;">
+                  <a href="login.html" class="nav-link">Login</a>
+                </li> -->
                             <li class="nav-item" style="color: black;">
-                                <a href="contact.html"" class=" nav-link"><span>Contact</span></a>
+                                <a href="contact.html" class="nav-link"><span>Contact</span></a>
                             </li>
                             <li class="nav-item" style="color: black;">
                                 <a href="about.html" class="nav-link"><span>About</span></a>
@@ -96,37 +92,40 @@
                                     <a class="dropdown-item" href="login.html">Login</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary"
-                                        id="totalItems">0</span>
-                                </a>
-                                <div class="dropdown-menu shopping-cart p-2">
-                                    <ul>
-                                        <li>
-                                            <div class="drop-title">Your Cart</div>
-                                        </li>
-                                        <li id="cartItemsContainer">
-                                            <!-- item list container filled with JS -->
-                                        </li>
-                                        <li>
-                                            <div class="drop-title d-flex justify-content-between">
-                                                <span>Total: </span>
-                                                <span class="text-primary"><strong>£<span
-                                                            id="totalPrice"></span></strong></span>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
-                                            <span></span>
-                                            <button class="btn btn-lg"
-                                                onclick="window.location.href='checkout.html'">Checkout</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
                         </ul>
                     </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary"
+                                    id="totalItems">0</span>
+                            </a>
+                            <div class="dropdown-menu shopping-cart p-2 custom-dropdown-menu">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">Your Cart</div>
+                                    </li>
+                                    <li id="cartItemsContainer" class="overflow-auto max-height">
+                                        <!-- item list container filled with JS -->
+                                    </li>
+                                    <li>
+                                        <div class="drop-title d-flex justify-content-between">
+                                            <span>Total: </span>
+                                            <span class="text-primary"><strong>£<span
+                                                        id="totalPrice"></span></strong></span>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
+                                        <span></span>
+                                        <button class="btn btn-lg"
+                                            onclick="window.location.href='checkout.html'">Checkout</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
             </div>
             </nav>
         </div>
