@@ -88,9 +88,10 @@ function init() {
     
     const basketIcon = document.querySelector('.nav-item.dropdown .fa.fa-shopping-basket');
     basketIcon.addEventListener('click', toggleDropdownMenu);
-  
+
     basket = JSON.parse(getCookie("basket"));
     favourites = JSON.parse(getCookie("favourites"));
+  
   }
 
 
@@ -396,7 +397,7 @@ function redraw() {
 
     //Reset the product list (there are possibly more efficient ways of doing this, but this is simplest)
     document.querySelector('.productList').innerHTML = '';
-    console.log("Checking basket contents: " + basket)
+    console.log("Checking basket contents: " + basket);
     if (basket !== null) {
       updateQuantityInputs();
       updateItemCount();
